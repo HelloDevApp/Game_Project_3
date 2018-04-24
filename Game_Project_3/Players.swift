@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Player {
+class Players {
     var playerTeamNumber: Int
     var name: String?
     var charactersNames = [String]()

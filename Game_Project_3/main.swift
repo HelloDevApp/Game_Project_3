@@ -7,8 +7,10 @@
 //
 
 import Foundation
+//we create a communication instance to be used.
+let communication = Communication()
 
 //we create the two players who compose the game
-let player_1 = Player(playerTeamNumber: 1)
-let player_2 = Player(playerTeamNumber: 2)
+let player_1 = Players(playerTeamNumber: 1)
+let player_2 = Players(playerTeamNumber: 2)
 
