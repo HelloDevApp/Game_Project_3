@@ -38,6 +38,7 @@ enum damages: Int {
 
 
 class Characters {
+    var indexPosition: Int
     let idNumber: Int
     var type: type
     var name: String
@@ -46,7 +47,8 @@ class Characters {
     var healer: Int?
     var weapon: weapons
     
-    init(idNumber: Int,type: type, name: String, life: life, weaponDamages: damages, healer: Int?, weapon: weapons) {
+    init(indexPosition: Int, idNumber: Int, type: type, name: String, life: life, weaponDamages: damages, healer: Int?, weapon: weapons) {
+        self.indexPosition = indexPosition
         self.idNumber = idNumber
         self.type = type
         self.name = name
