@@ -42,16 +42,16 @@ class Characters {
     var type: type
     var name: String
     var life: life
-    var damages: damages
+    var weaponDamages: damages
     var healer: Int?
     var weapon: weapons
     
-    init(idNumber: Int,type: type, name: String, life: life, damages: damages, healer: Int?, weapon: weapons) {
+    init(idNumber: Int,type: type, name: String, life: life, weaponDamages: damages, healer: Int?, weapon: weapons) {
         self.idNumber = idNumber
         self.type = type
         self.name = name
         self.life = life
-        self.damages = damages
+        self.weaponDamages = weaponDamages
         self.healer = healer
         self.weapon = weapon
     }
