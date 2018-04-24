@@ -8,3 +8,7 @@
 
 import Foundation
 
+//we create the two players who compose the game
+let player_1 = Player(playerTeamNumber: 1)
+let player_2 = Player(playerTeamNumber: 2)
+
