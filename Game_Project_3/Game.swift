@@ -19,7 +19,7 @@ class Game {
         // the player enters a name
         if let nameTeam = readLine() {
             
-            player.charactersNames.append(nameTeam)
+            player.name = nameTeam
             
             //If the user does not enter a value, an error is displayed and he tries to enter a value correctly.
             
