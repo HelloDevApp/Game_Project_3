@@ -8,3 +8,17 @@
 
 import Foundation
 
+class Player {
+    var playerTeamNumber: Int
+    var name: String?
+    var charactersNames = [String]()
+    var characters = [Characters]()
+    var attackerCharacter: Characters?
+    var enemyCharacter: Characters?
+    var numberTeamCharacters = 0
+    
+    init(playerTeamNumber: Int) {
+        self.playerTeamNumber = playerTeamNumber
+    }
+    
+}
