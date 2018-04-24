@@ -8,23 +8,11 @@
 
 import Foundation
 
-enum type {
-    case soldier
-    case magician
-    case colossus
-    case gnome
-}
-enum life: Int {
-    case soldier = 100
-    case magician = 50
-    case colossus = 110
-    case gnome = 18
-}
-enum damages {
-    case soldier
-    case magician
-    case colossus
-    case gnome
+enum type: String {
+    case soldier = "Combattant"
+    case magician = "Mâge"
+    case colossus = "Colosse"
+    case gnome = "Nain"
 }
 enum weapons: String {
     case soldier = "Épée"
@@ -32,22 +20,37 @@ enum weapons: String {
     case colossus = "Poing en Fer"
     case gnome = "Arbalète"
 }
+enum life: Int {
+    case soldier = 100
+    case magician = 50
+    case colossus = 110
+    case gnome = 18
+}
+enum damages: Int {
+    case soldier = 10
+    case magician = 9
+    case colossus = 7
+    case gnome = 21
+}
 
 
 
 
 
 class Characters {
+    var type: type
     var name: String
-    var life: Int
-    var damages: Int
+    var life: life
+    var damages: damages
     var healer: Int?
-    var weapon:
+    var weapon: weapons
     
-    init(name: String, life: Int, damages: Int, healer: Int?) {
+    init(type: type, name: String, life: life, damages: damages, healer: Int?, weapon: weapons) {
+        self.type = type
         self.name = name
         self.life = life
         self.damages = damages
         self.healer = healer
+        self.weapon = weapon
     }
 }
