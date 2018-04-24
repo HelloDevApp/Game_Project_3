@@ -10,23 +10,25 @@ import Foundation
 
 class Game {
     
-    //Is used to request the name of a player's team
-    func requestTeamName(player: Players) {
-        communication.messageNamedCharacter(player: player)
+    func mainRequestTeamName(player: Players) {
+        //we display the message 'Player *: enter a name for your team'
+        communication.messageRequestNameTeam(player: player)
+        //°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
+        game.answerTeamName(player: player)
+        //we display the message  'player * your team is named \(nameTeam)'
+        communication.teamNameIs(player: player)
     }
+   
     //Answer team name
     func answerTeamName(player: Players) {
         // the player enters a name
         if let nameTeam = readLine() {
-            
-            player.name = nameTeam
-            
             //If the user does not enter a value, an error is displayed and he tries to enter a value correctly.
-            
             if nameTeam.isEmpty {
                 print(communication.errorNameIsEmpty)
-                requestTeamName(player: player)
+                mainRequestTeamName(player: player)
             }
+            player.name = nameTeam
         }
     }
 }

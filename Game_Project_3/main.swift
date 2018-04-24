@@ -9,8 +9,13 @@
 import Foundation
 //we create a communication instance to be used.
 let communication = Communication()
-
+//we create a game
+let game = Game()
 //we create the two players who compose the game
 let player_1 = Players(playerTeamNumber: 1)
 let player_2 = Players(playerTeamNumber: 2)
 
+//we display the message 'Choose and name 3 characters each your turn'
+print(communication.choose3Characters)
+
+game.mainRequestTeamName(player: player_1)

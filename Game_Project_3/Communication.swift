@@ -14,10 +14,15 @@ class Communication {
     //ALERT
     let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour"
     
-    
-    
-    func messageNamedCharacter(player: Players) {
-        //Message display that asks what you want to call your team
-        print("Joueur \(player.numberTeamCharacters) comment voulez vous nommer votre équipe ?")
+    func messageRequestNameTeam(player: Players) {
+        print("Joueur \(player.playerTeamNumber): Entrer un nom pour votre équipe.\n")
+    }
+    func teamNameIs(player: Players) {
+        if player.name != nil {
+            print("\nJoueur \(player.playerTeamNumber), Votre équipe se nomme: \(player.name!)")
+        }
+    }
+    func messageNamedCharacter(character: Characters) {
+        print("Vous avez choisi un \(character.type.rawValue) comment voulez vous le nommer?")
     }
 }
