@@ -11,15 +11,6 @@ import Foundation
 class Game {
     var indexarrayPosition = 0
     
-    
-    func RequestTeamNameAndChoose(player: Players) {
-        //we display the message 'Player *: enter a name for your team'
-        communication.messageRequestNameTeam(player: player)
-        //°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
-        game.answerTeamName(player: player)
-        //we display the message  'player * your team is named \(nameTeam)'
-        communication.messageTeamNameIs(player: player)
-    }
    
     //Answer team name
     func answerTeamName(player: Players) {
@@ -29,7 +20,8 @@ class Game {
             //If the user does not enter a value, an error is displayed and he tries to enter a value correctly.
             if nameTeam.isEmpty {
                 print(communication.errorNameIsEmpty)
-                RequestTeamNameAndChoose(player: player)
+                communication.messageRequestNameTeam(player: player)
+                answerTeamName(player: player)
                 
             } else {
                 player.name = nameTeam
@@ -50,19 +42,22 @@ class Game {
             switch choiceCharacter {
             case String(1):
                 print(communication.messageNamedCharacter(character: .soldier))
-                nameCharacterAndCreate(player: player, type: .soldier)
+                nameCharacters(player: player, type: .soldier)
             case String(2):
                 print(communication.messageNamedCharacter(character: .magician))
-                nameCharacterAndCreate(player: player, type: .magician)
+                nameCharacters(player: player, type: .magician)
             case String(3):
                 print(communication.messageNamedCharacter(character: .colossus))
-                nameCharacterAndCreate(player: player, type: .colossus)
+                nameCharacters(player: player, type: .colossus)
             case String(4):
                 print(communication.messageNamedCharacter(character: .gnome))
-                nameCharacterAndCreate(player: player, type: .gnome)
+                nameCharacters(player: player, type: .gnome)
                 
             default:
                 print(communication.errorTerm)
+                print(communication.helpChooseCharacter)
+                dispayCharacters()
+                answerChoiceCharacterTeam(player: player)
             }
         }
     }
@@ -72,20 +67,21 @@ class Game {
             dispayCharacters()
             //the player makes his choice
             answerChoiceCharacterTeam(player: player)
+            player.numberTeamCharacters += 1
+            communication.chooseAgainCharacter(player: player_1)
         }
     }
-    func nameCharacterAndCreate(player: Players, type: type) {
+    func nameCharacters(player: Players, type: type) {
         if let nameCharacter = readLine() {
             if player_1.charactersNames.contains(nameCharacter) || player_2.charactersNames.contains(nameCharacter) {
                 print(communication.nameAlreadyExists)
-                nameCharacterAndCreate(player: player, type: type)
+                nameCharacters(player: player, type: type)
             } else if nameCharacter.isEmpty {
                 print(communication.errorNameIsEmpty)
-                nameCharacterAndCreate(player: player, type: type)
+                nameCharacters(player: player, type: type)
             } else {
-                createCharacter(player: player, type: type, nameCharacter: nameCharacter)
+                player.charactersNames.append(nameCharacter)
             }
-            
         }
     }
     func createCharacter(player: Players, type: type, nameCharacter: String) {
@@ -94,7 +90,6 @@ class Game {
             if indexarrayPosition < 3 {
                 let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.soldier, weaponDamages: damages.soldier, healer: nil, weapon: weapons.soldier)
                 indexarrayPosition += 1
-                
                 player.characters.append(character)
             } else {
                 indexarrayPosition = 0

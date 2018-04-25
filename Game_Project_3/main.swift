@@ -17,7 +17,13 @@ let player_2 = Players(playerTeamNumber: 2)
 
 //we display the message 'Choose and name 3 characters each your turn'
 print(communication.choose3Characters)
-game.RequestTeamNameAndChoose(player: player_1)
-print(communication.helpChooseCharacter)
+//we display the message 'Player *: enter a name for your team'
+communication.messageRequestNameTeam(player: player_1)
+//°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
+game.answerTeamName(player: player_1)
+//we display the message  'player * your team is named \(nameTeam)'
+communication.messageTeamNameIs(player: player_1)
 
+print(communication.helpChooseCharacter)
 game.chooseCharacterTeam(player: player_1)
+

@@ -25,22 +25,25 @@ class Communication {
     let nameAlreadyExists = "Ce nom est deja utiliser, veuillez en choisir un autre!"
     //ALERT
     let playerChooseCharacter = "Choisissez vos 3 personnages."
-    let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour"
+    let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour.\n"
     let helpChooseCharacter = "Entrez un chiffre entre 1 et 4 pour choisir un personnage."
     func messageRequestNameTeam(player: Players) {
         print("Joueur \(player.playerTeamNumber): Entrer un nom pour votre équipe.\n")
     }
     func messageTeamNameIs(player: Players) {
         if player.name != nil {
-            print("\nJoueur \(player.playerTeamNumber), Votre équipe se nomme: \(player.name!)")
+            print("\nJoueur \(player.playerTeamNumber), Votre équipe se nomme: \(player.name!)\n")
         } else {
             print(errorTerm)
         }
     }
-    func messageNamedCharacter(character: type) {
-        print("Vous avez choisi un \(character.rawValue), comment voulez vous le nommer?=")
+    func messageNamedCharacter(character: type) -> String {
+        return "\nVous avez choisi un \(character), donnez lui un nom\n"
     }
-    func messageChooseCharacter(player: Players) {
-        print("Joueur\(player.playerTeamNumber) \(playerChooseCharacter)")
+    func messageChooseCharacter(player: Players) -> String {
+        return "Joueur\(player.playerTeamNumber) \(playerChooseCharacter)"
+    }
+    func chooseAgainCharacter(player: Players) {
+        print("\nChoisissez encore \(3 - player.numberTeamCharacters) personages")
     }
 }
