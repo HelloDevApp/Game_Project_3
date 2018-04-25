@@ -62,13 +62,15 @@ class Game {
         }
     }
     func chooseCharacterTeam(player: Players) {
-        while player_1.numberTeamCharacters < 3 {
+        while player.numberTeamCharacters < 3 {
             //we display the type of characters
             dispayCharacters()
             //the player makes his choice
             answerChoiceCharacterTeam(player: player)
             player.numberTeamCharacters += 1
-            communication.chooseAgainCharacter(player: player_1)
+            if player.numberTeamCharacters != 3 {
+                communication.chooseAgainCharacter(player: player)
+            }
         }
     }
     func nameCharacters(player: Players, type: type) {
