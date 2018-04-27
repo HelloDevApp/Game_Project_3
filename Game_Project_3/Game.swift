@@ -11,7 +11,7 @@ import Foundation
 class Game {
     var indexarrayPosition = 0
     
-   
+   //MARK:-Composition Team func
     //Answer team name
     func answerTeamName(player: Players) {
         // the player enters a name
@@ -55,7 +55,7 @@ class Game {
                 
             default:
                 print(communication.errorTerm)
-                print(communication.helpChooseCharacter)
+                communication.helpChooseCharacter(player: player)
                 dispayCharacters()
                 answerChoiceCharacterTeam(player: player)
             }
@@ -125,4 +125,6 @@ class Game {
             
         }
     }
+    //MARK:-Fight Func
+    
 }
