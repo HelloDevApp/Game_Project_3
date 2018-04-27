@@ -23,6 +23,40 @@ class Fight {
         }
     }
     func attackersChoice(player: Players) {
-        
+        if let choice = readLine() {
+            switch choice {
+            case String(1):
+                if player.characters.count > 0 {
+                    player.attackerCharacter = player.characters[0]
+                    communication.verifyTypeAttakers(player: player, charactereNum: 0)
+                } else {
+                    print(communication.noCharacterValue)
+                }
+            case String(2):
+                if player.characters.count > 1 {
+                    player.attackerCharacter = player.characters[1]
+                    communication.verifyTypeAttakers(player: player, charactereNum: 1)
+                    
+                } else {
+                    print(communication.noCharacterValue)
+                }
+            case String(3):
+                if player.characters.count > 2 {
+                    player.attackerCharacter = player.characters[2]
+                    communication.verifyTypeAttakers(player: player, charactereNum: 2)
+                    
+                } else {
+                    print(communication.noCharacterValue)
+                }
+            default:
+                print(communication.noCharacterValue)
+            }
+        }
+    }
+    func attackChoiceError(attacker: Players, enemy: Players) {
+        print(communication.noCharacterValue)
+        print(communication.ignoreValue)
+        communication.enterNumberBetween(playerAttacker: attacker, playerEnemy: enemy, attackers: true, enemy: false)
+        communication.display2team(playerIndex: attacker, playerNoIndex: enemy)
     }
 }

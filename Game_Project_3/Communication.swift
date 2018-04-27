@@ -20,6 +20,8 @@ class Communication {
     let errorTerm = "\nErreur valeur incorrecte\n"
     let errorNameIsEmpty = "Erreur! veuillez entrer un nom!"
     let nameAlreadyExists = "\nCe nom est deja utiliser, veuillez en choisir un autre!\n"
+    let noCharacterValue = "Cette valeur ne contient pas de personnages"
+    let ignoreValue = "Erreur! Votre valeur n'as pas été prise en compte. c'est toujours à votre tour"
     
     //MARK:-Help Message
     let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour.\n"
@@ -91,6 +93,42 @@ class Communication {
             } else {
                 print("\nNom: \(perso.name)\nType: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n Soin: NON")
             }
+        }
+    }
+    func verifyTypeAttakers(player: Players, charactereNum: Int) {
+        if player.characters[charactereNum].type != .magician {
+            print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire")
+        } else {
+            print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire ou effectuer un soin")
+        }
+    }
+    func enterNumberBetween(playerAttacker: Players, playerEnemy: Players, attackers: Bool, enemy: Bool) {
+        if attackers == true {
+            if playerAttacker.characters.count > 1 {
+                print("Entrez un chiffre entre 1 et \(playerAttacker.characters.count) pour choisir votre attaquant")
+            } else {
+                print("tapez 1 pour choisir le dernier joueur vivant de votre équipe pour l'attaque")
+            }
+        }
+        if enemy == true {
+            if playerEnemy.characters.count > 1 {
+                print("Entrez un chiffre entre 1 et \(playerEnemy.characters.count) pour choisir le personnages adverse a attaquer")
+            } else {
+                print("Tapez 1 pour choisir le dernier personnage vivant de l'équipe adverse.")
+            }
+        }
+        
+        
+        
+        
+        if playerAttacker.characters.count > 1 {
+            if attackers == true {
+                print("Entrez un chiffre entre 1 et \(playerAttacker.characters.count) pour choisir votre attaquant")
+            } else {
+                print("Entrez un chiffre entre 1 et \(playerEnemy.characters.count) pour choisir le personnages adverse a attaquer")
+            }
+        } else {
+            print("tapez 1 pour choisir le dernier personnage vivant de votre equipe pour l'attaque")
         }
     }
 }
