@@ -30,10 +30,10 @@ class Game {
         }
     }
     func dispayCharacters() {
-        print(communication.soldierFull)
-        print(communication.magicianFull)
-        print(communication.colossusFull)
-        print(communication.gnomeFull)
+        print(communication.soldier)
+        print(communication.magician)
+        print(communication.colossus)
+        print(communication.gnome)
     }
     func answerChoiceCharacterTeam(player: Players) {
         

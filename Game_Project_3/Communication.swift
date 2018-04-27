@@ -11,10 +11,10 @@ import Foundation
 class Communication {
     
     //MARK:-Characters
-    let soldierFull = "\n1.Combattant:\n Points de vie: 100\n Dégats: 10\n Arme: Épée\n"
-    let magicianFull = "\n2.Mage:\n Points de vie: 50\n Dégats: 9\n Soin: 12\n Arme: Dague soignante\n"
-    let colossusFull = "\n3.Colosse:\n Points de vie: 110\n Dégats: 4\n Arme: Poing en fer\n"
-    let gnomeFull = "\n4.Nain:\n Points de vie: 14\n Dégats: 21\n Arme: Arbalette\n"
+    let soldier = "\n1.Combattant:\n Points de vie: 100\n Dégats: 10\n Arme: Épée\n"
+    let magician = "\n2.Mage:\n Points de vie: 50\n Dégats: 9\n Soin: 12\n Arme: Dague soignante\n"
+    let colossus = "\n3.Colosse:\n Points de vie: 110\n Dégats: 4\n Arme: Poing en fer\n"
+    let gnome = "\n4.Nain:\n Points de vie: 14\n Dégats: 21\n Arme: Arbalette\n"
     // MARK:-Errors
     let errorTerm = "\nErreur valeur incorrecte\n"
     let errorNameIsEmpty = "Erreur! veuillez entrer un nom!"
@@ -58,9 +58,8 @@ class Communication {
     func teamFull(player: Players) {
         print("\nL'équipe du Joueur \(player.playerTeamNumber) est au complet!")
     }
-    //--------------------------------------------
+    
     //MARK:-Fight func
-    //--------------------------------------------
     func playerTurn(player: Players) {
         print("Joueur \(player.playerTeamNumber) c'est a vous!")
     }
