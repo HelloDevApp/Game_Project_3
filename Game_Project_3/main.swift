@@ -14,6 +14,8 @@ let game = Game()
 //we create the two players who compose the game
 let player_1 = Players(playerTeamNumber: 1)
 let player_2 = Players(playerTeamNumber: 2)
+//we create a fight
+let fight = Fight()
 
 //we display the message 'Choose and name 3 characters each your turn'
 print(communication.choose3Characters)
@@ -32,11 +34,16 @@ communication.messageRequestNameTeam(player: player_2)
 //°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
 game.answerTeamName(player: player_2)
 //we display the message  'player * your team is named \(nameTeam)'
+
 communication.messageTeamNameIs(player: player_2)
 
 communication.helpChooseCharacter(player: player_2)
 game.chooseCharacterTeam(player: player_2)
 communication.teamFull(player: player_2)
-print(communication.textSeparation + communication.textSeparation)
+print(communication.textSeparation)
+
 print(communication.fightReady)
+
+
+
 

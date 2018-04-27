@@ -22,14 +22,13 @@ class Game {
                 print(communication.errorNameIsEmpty)
                 communication.messageRequestNameTeam(player: player)
                 answerTeamName(player: player)
-                
             } else {
                 player.name = nameTeam
             }
             
         }
     }
-    func dispayCharacters() {
+    func dispayCharactersForComposeTeam() {
         print(communication.soldier)
         print(communication.magician)
         print(communication.colossus)
@@ -56,7 +55,7 @@ class Game {
             default:
                 print(communication.errorTerm)
                 communication.helpChooseCharacter(player: player)
-                dispayCharacters()
+                dispayCharactersForComposeTeam()
                 answerChoiceCharacterTeam(player: player)
             }
         }
@@ -64,7 +63,7 @@ class Game {
     func chooseCharacterTeam(player: Players) {
         while player.numberTeamCharacters < 3 {
             //we display the type of characters
-            dispayCharacters()
+            dispayCharactersForComposeTeam()
             //the player makes his choice
             answerChoiceCharacterTeam(player: player)
             player.numberTeamCharacters += 1

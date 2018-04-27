@@ -15,22 +15,27 @@ class Communication {
     let magician = "\n2.Mage:\n Points de vie: 50\n Dégats: 9\n Soin: 12\n Arme: Dague soignante\n"
     let colossus = "\n3.Colosse:\n Points de vie: 110\n Dégats: 4\n Arme: Poing en fer\n"
     let gnome = "\n4.Nain:\n Points de vie: 14\n Dégats: 21\n Arme: Arbalette\n"
+    
     // MARK:-Errors
     let errorTerm = "\nErreur valeur incorrecte\n"
     let errorNameIsEmpty = "Erreur! veuillez entrer un nom!"
     let nameAlreadyExists = "\nCe nom est deja utiliser, veuillez en choisir un autre!\n"
-    //MARK:-Alert
+    
+    //MARK:-Help Message
     let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour.\n"
-    let fightReady = "C'est parti, le combat peut commencer!"
+    
     //MARK:-Fight
+    let fightReady = "C'est parti, le combat peut commencer!"
     let selectedAnAttacker = "Choisissez quel personnage de votre équipe vous voulez utiliser pour l'attaque."
+    
     //MARK:-Sceneries
     let sceneries1 = "=========================================================================================="
     let sceneries2 = "------------------------------------------------------------------------------------------"
     let sceneries3 = "<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"
     let sceneries4 = "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
     let textSeparation = "\n\n"
-    //MARK:-Team composition func
+    
+    //MARK:-Team Composition Func
     func messageRequestNameTeam(player: Players) {
         print("\nJoueur \(player.playerTeamNumber): Entrer un nom pour votre équipe.\n")
     }
@@ -62,5 +67,30 @@ class Communication {
     //MARK:-Fight func
     func playerTurn(player: Players) {
         print("Joueur \(player.playerTeamNumber) c'est a vous!")
+    }
+    func display2team(playerIndex: Players, playerNoIndex: Players) {
+        var i = 1
+        print(communication.sceneries2)
+        print("\(playerIndex.name!) voici vos Personnages:")
+        for perso in playerIndex.characters {
+            if perso.healer != nil {
+                print("\n\(i).Nom: \(perso.name)\n Type: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n soin: \(perso.healer!)Pv par Soin")
+            } else {
+                print("\n\(i)Nom: \(perso.name)\nType: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n Soin: Non")
+            }
+            i += 1
+        }
+        print("\(communication.sceneries2)"
+            + "\(communication.sceneries4)"
+            + "\(communication.sceneries2)")
+        
+        print("Personnages de l'équipe adverse:")
+        for perso in playerIndex.characters {
+            if perso.healer != nil {
+                print("\nNom: \(perso.name)\nType: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n Soin: \(perso.healer!)Pv par Soin")
+            } else {
+                print("\nNom: \(perso.name)\nType: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n Soin: NON")
+            }
+        }
     }
 }
