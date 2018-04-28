@@ -9,7 +9,6 @@
 import Foundation
 
 class Game {
-    var indexarrayPosition = 0
     
    //MARK:-Composition Team func
     //Answer team name
@@ -82,44 +81,36 @@ class Game {
                 nameCharacters(player: player, type: type)
             } else {
                 player.charactersNames.append(nameCharacter)
+                createCharacter(player: player, type: type, nameCharacter: nameCharacter)
             }
         }
     }
     func createCharacter(player: Players, type: type, nameCharacter: String) {
+        var indexarrayPosition = 0
         switch type {
         case .soldier:
             if indexarrayPosition < 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.soldier, weaponDamages: damages.soldier, healer: nil, weapon: weapons.soldier)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.soldier.rawValue, weaponDamages: damages.soldier, healer: nil, weapon: weapons.soldier)
                 indexarrayPosition += 1
                 player.characters.append(character)
-            } else {
-                indexarrayPosition = 0
             }
-            
         case .magician:
             if indexarrayPosition < 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.magician, weaponDamages: damages.magician, healer: 10, weapon: weapons.magician)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.magician.rawValue, weaponDamages: damages.magician, healer: 10, weapon: weapons.magician)
                 indexarrayPosition += 1
                 player.characters.append(character)
-            } else {
-                indexarrayPosition = 0
             }
         case .colossus:
             if indexarrayPosition < 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.colossus, weaponDamages: damages.colossus, healer: nil, weapon: weapons.colossus)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.colossus.rawValue, weaponDamages: damages.colossus, healer: nil, weapon: weapons.colossus)
                 indexarrayPosition += 1
                 player.characters.append(character)
-                
-            } else {
-                indexarrayPosition = 0
             }
         case .gnome:
             if indexarrayPosition < 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.gnome, weaponDamages: damages.gnome, healer: nil, weapon: weapons.gnome)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.gnome.rawValue, weaponDamages: damages.gnome, healer: nil, weapon: weapons.gnome)
                 indexarrayPosition += 1
                 player.characters.append(character)
-            } else {
-                indexarrayPosition = 0
             }
             
         }

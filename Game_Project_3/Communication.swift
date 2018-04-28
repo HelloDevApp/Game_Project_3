@@ -19,16 +19,16 @@ class Communication {
     // MARK:-Errors
     let errorTerm = "\nErreur valeur incorrecte\n"
     let errorNameIsEmpty = "Erreur! veuillez entrer un nom!"
-    let nameAlreadyExists = "\nCe nom est deja utiliser, veuillez en choisir un autre!\n"
-    let noCharacterValue = "Cette valeur ne contient pas de personnages"
-    let ignoreValue = "Erreur! Votre valeur n'as pas été prise en compte. c'est toujours à votre tour"
+    let nameAlreadyExists = "\nCe nom est deja utilisé, veuillez en choisir un autre!\n"
+    let noCharacterValue = "Cette valeur ne contient pas de personnage"
+    let ignoreValue = "Erreur! Votre valeur n'a pas été prise en compte. C'est toujours à votre tour"
     
     //MARK:-Help Message
     let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour.\n"
     
     //MARK:-Fight
     let fightReady = "C'est parti, le combat peut commencer!"
-    let selectedAnAttacker = "Choisissez quel personnage de votre équipe vous voulez utiliser pour l'attaque."
+    let selectedAnAttacker = "Choisissez le personnage de votre équipe que vous souhaitez utiliser pour l'attaque."
     
     //MARK:-Sceneries
     let sceneries1 = "=========================================================================================="
@@ -39,7 +39,7 @@ class Communication {
     
     //MARK:-Team Composition Func
     func messageRequestNameTeam(player: Players) {
-        print("\nJoueur \(player.playerTeamNumber): Entrer un nom pour votre équipe.\n")
+        print("\nJoueur \(player.playerTeamNumber): Entrez un nom pour votre équipe.\n")
     }
     func messageTeamNameIs(player: Players) {
         if player.name != nil {
@@ -52,7 +52,7 @@ class Communication {
             print("Joueur \(player.playerTeamNumber): Choisissez vos 3 personnages.\n"
                 + helpMessageChooseCharacter)
         } else {
-            print("Joueur \(player.playerTeamNumber): Vous devez choisir encore \(3 - player.numberTeamCharacters) personnages.\n"
+            print("Joueur \(player.playerTeamNumber): Vous devez choisir encore \(3 - player.numberTeamCharacters) personnage(s).\n"
                 + helpMessageChooseCharacter)
         }
     }
@@ -60,10 +60,10 @@ class Communication {
         return "\nVous avez choisi un \(character.rawValue), donnez lui un nom\n"
     }
     func chooseAgainCharacter(player: Players) {
-        print("\nChoisissez encore \(3 - player.numberTeamCharacters) personages")
+        print("\nChoisissez encore \(3 - player.numberTeamCharacters) personage(s)")
     }
     func teamFull(player: Players) {
-        print("\nL'équipe du Joueur \(player.playerTeamNumber) est au complet!")
+        print("\nL'équipe du Joueur \(player.playerTeamNumber) est au complet!\n")
     }
     
     //MARK:-Fight func
@@ -71,29 +71,23 @@ class Communication {
         print("Joueur \(player.playerTeamNumber) c'est a vous!")
     }
     func display2team(playerIndex: Players, playerNoIndex: Players) {
-        var i = 1
-        print(communication.sceneries2)
-        print("\(playerIndex.name!) voici vos Personnages:")
-        for perso in playerIndex.characters {
-            if perso.healer != nil {
-                print("\n\(i).Nom: \(perso.name)\n Type: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n soin: \(perso.healer!)Pv par Soin")
-            } else {
-                print("\n\(i)Nom: \(perso.name)\nType: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n Soin: Non")
-            }
-            i += 1
-        }
-        print("\(communication.sceneries2)"
-            + "\(communication.sceneries4)"
+        print("\(communication.sceneries2)\n"
+            + "\(communication.sceneries4)\n"
             + "\(communication.sceneries2)")
         
-        print("Personnages de l'équipe adverse:")
-        for perso in playerIndex.characters {
-            if perso.healer != nil {
-                print("\nNom: \(perso.name)\nType: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n Soin: \(perso.healer!)Pv par Soin")
-            } else {
-                print("\nNom: \(perso.name)\nType: \(perso.type)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages)Pv\n Soin: NON")
-            }
-        }
+        print(playerIndex.name! + " voici vos personnages:")
+        fight.displayTeam(player: playerIndex, index: true)
+        
+        print("\(communication.sceneries2)\n"
+            + "\(communication.sceneries4)\n"
+            + "\(communication.sceneries2)")
+        
+        print("Personnage(s) de l'équipe adverse:")
+        fight.displayTeam(player: playerNoIndex, index: false)
+        
+        print("\(communication.sceneries2)\n"
+            + "\(communication.sceneries4)\n"
+            + "\(communication.sceneries2)")
     }
     func verifyTypeAttakers(player: Players, charactereNum: Int) {
         if player.characters[charactereNum].type != .magician {
@@ -112,7 +106,7 @@ class Communication {
         }
         if enemy == true {
             if playerEnemy.characters.count > 1 {
-                print("Entrez un chiffre entre 1 et \(playerEnemy.characters.count) pour choisir le personnages adverse a attaquer")
+                print("Entrez un chiffre entre 1 et \(playerEnemy.characters.count) pour choisir le personnage adverse à attaquer")
             } else {
                 print("Tapez 1 pour choisir le dernier personnage vivant de l'équipe adverse.")
             }

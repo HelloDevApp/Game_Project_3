@@ -40,10 +40,10 @@ communication.messageTeamNameIs(player: player_2)
 communication.helpChooseCharacter(player: player_2)
 game.chooseCharacterTeam(player: player_2)
 communication.teamFull(player: player_2)
-print(communication.textSeparation)
+
 
 print(communication.fightReady)
-
+fight.startFight(player1: player_1, player2: player_2)
 
 
 
