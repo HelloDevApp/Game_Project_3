@@ -117,18 +117,5 @@ class Communication {
                 print("Tapez 1 pour choisir le dernier personnage vivant de l'équipe adverse.")
             }
         }
-        
-        
-        
-        
-        if playerAttacker.characters.count > 1 {
-            if attackers == true {
-                print("Entrez un chiffre entre 1 et \(playerAttacker.characters.count) pour choisir votre attaquant")
-            } else {
-                print("Entrez un chiffre entre 1 et \(playerEnemy.characters.count) pour choisir le personnages adverse a attaquer")
-            }
-        } else {
-            print("tapez 1 pour choisir le dernier personnage vivant de votre equipe pour l'attaque")
-        }
     }
 }

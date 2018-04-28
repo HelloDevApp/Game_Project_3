@@ -58,5 +58,6 @@ class Fight {
         print(communication.ignoreValue)
         communication.enterNumberBetween(playerAttacker: attacker, playerEnemy: enemy, attackers: true, enemy: false)
         communication.display2team(playerIndex: attacker, playerNoIndex: enemy)
+        
     }
 }
