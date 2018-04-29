@@ -73,7 +73,7 @@ class Fight {
             switch attackerChoice {
             case String(1):
                 if playerEnemy.characters.count > 0 {
-                    playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[0].idNumber]
+                    playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[0].indexPosition]
                     fight.assault(playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
@@ -81,7 +81,7 @@ class Fight {
                 }
             case String(2):
                 if playerEnemy.characters.count > 1 {
-                    playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[1].idNumber]
+                    playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[1].indexPosition]
                     fight.assault(playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
@@ -89,7 +89,7 @@ class Fight {
                 }
             case String(3):
                 if playerEnemy.characters.count > 2 {
-                    playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[2].idNumber]
+                    playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[2].indexPosition]
                     fight.assault(playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
@@ -107,6 +107,13 @@ class Fight {
         
     }
     func deleteCharacterArray(player: Players, character: Characters) {
-        player.characters.remove(at: character.idNumber)
+        player.characters.remove(at: character.indexPosition)
+    }
+    func changeIndexPosition(player: Players) {
+        var i = 0
+        for character in player.characters {
+            character.indexPosition = i
+            i += 1
+        }
     }
 }

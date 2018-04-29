@@ -123,7 +123,8 @@ class Communication {
                     print("\n\(i). Nom: \(perso.name)\n Type: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n soin: \(perso.healer!)Pv par Soin")
                 } else {
                     print("\n\(i). Nom: \(perso.name)\nType: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n Soin: Non")
-                    print(perso.idNumber)
+                    //'for test'print(perso.idNumber)
+                    //'for test'print(perso.indexPosition)
                 }
                 i += 1
             }
@@ -133,6 +134,9 @@ class Communication {
                     print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: \(perso.healer!)Pv par Soin")
                 } else {
                     print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: NON")
+                    
+                    //'for test'print(perso.idNumber)
+                    //'for test'print(perso.indexPosition)
                 }
             }
         }
@@ -143,8 +147,12 @@ class Communication {
         if enemy.life <= 0 {
             print(livingEnemy + enemyIsDead)
             fight.deleteCharacterArray(player: playerEnemy, character: enemy)
+            fight.changeIndexPosition(player: playerEnemy)
         } else {
             print(livingEnemy)
         }
+    }
+    func showTheWinner(player: Players) {
+        print("L'équipe qui sort vainqueur de la partie est : \(player.name) !!")
     }
 }
