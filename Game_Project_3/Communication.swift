@@ -137,7 +137,7 @@ class Communication {
         }
     }
     func attackInformation(playerEnemy: Players, attacker: Characters, enemy: Characters) {
-        let livingEnemy = "\n\(attacker.name) attaque \(enemy.name) et lui enlève \(attacker.weaponDamages.rawValue)pv"
+        let livingEnemy = "\n\n\n\n\n\(attacker.name) attaque \(enemy.name) et lui enlève \(attacker.weaponDamages.rawValue)pv"
         let enemyIsDead = "\n\(enemy.name) n'as plus de vie et succombe de ses blessures"
         if enemy.life <= 0 {
             print(livingEnemy + enemyIsDead)
