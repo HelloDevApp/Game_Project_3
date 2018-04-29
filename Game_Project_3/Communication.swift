@@ -29,13 +29,14 @@ class Communication {
     //MARK:-Fight
     let fightReady = "C'est parti, le combat peut commencer!"
     let selectedAnAttacker = "Choisissez le personnage de votre équipe que vous souhaitez utiliser pour l'attaque."
-    
+    let selectedAnEnemy = "Choisissez maintenant le personnage adverse a attaquer"
     //MARK:-Sceneries
     let sceneries1 = "=========================================================================================="
     let sceneries2 = "------------------------------------------------------------------------------------------"
     let sceneries3 = "<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"
     let sceneries4 = "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
     let textSeparation = "\n\n"
+    let bigTextSeparation = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     
     //MARK:-Team Composition Func
     func messageRequestNameTeam(player: Players) {
@@ -76,14 +77,14 @@ class Communication {
             + "\(communication.sceneries2)")
         
         print(playerIndex.name! + " voici vos personnages:")
-        fight.displayTeam(player: playerIndex, index: true)
+        communication.displayTeam(player: playerIndex, index: true)
         
         print("\(communication.sceneries2)\n"
             + "\(communication.sceneries4)\n"
             + "\(communication.sceneries2)")
         
         print("Personnage(s) de l'équipe adverse:")
-        fight.displayTeam(player: playerNoIndex, index: false)
+        communication.displayTeam(player: playerNoIndex, index: false)
         
         print("\(communication.sceneries2)\n"
             + "\(communication.sceneries4)\n"
@@ -91,8 +92,10 @@ class Communication {
     }
     func verifyTypeAttakers(player: Players, charactereNum: Int) {
         if player.characters[charactereNum].type != .magician {
+            print(bigTextSeparation)
             print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire")
         } else {
+            print(bigTextSeparation)
             print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire ou effectuer un soin")
         }
     }
@@ -110,6 +113,38 @@ class Communication {
             } else {
                 print("Tapez 1 pour choisir le dernier personnage vivant de l'équipe adverse.")
             }
+        }
+    }
+    func displayTeam(player: Players, index: Bool) {
+        var i = 1
+        if index == true {
+            for perso in player.characters {
+                if perso.healer != nil {
+                    print("\n\(i). Nom: \(perso.name)\n Type: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n soin: \(perso.healer!)Pv par Soin")
+                } else {
+                    print("\n\(i). Nom: \(perso.name)\nType: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n Soin: Non")
+                    print(perso.idNumber)
+                }
+                i += 1
+            }
+        } else {
+            for perso in player.characters {
+                if perso.healer != nil {
+                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: \(perso.healer!)Pv par Soin")
+                } else {
+                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: NON")
+                }
+            }
+        }
+    }
+    func attackInformation(playerEnemy: Players, attacker: Characters, enemy: Characters) {
+        let livingEnemy = "\n\(attacker.name) attaque \(enemy.name) et lui enlève \(attacker.weaponDamages.rawValue)pv"
+        let enemyIsDead = "\n\(enemy.name) n'as plus de vie et succombe de ses blessures"
+        if enemy.life <= 0 {
+            print(livingEnemy + enemyIsDead)
+            fight.deleteCharacterArray(player: playerEnemy, character: enemy)
+        } else {
+            print(livingEnemy)
         }
     }
 }

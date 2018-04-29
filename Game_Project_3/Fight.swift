@@ -15,6 +15,7 @@ class Fight {
                 print(communication.selectedAnAttacker)
                 communication.display2team(playerIndex: player1, playerNoIndex: player2)
                 attackersChoice(playerAttacker: player1)
+                print(communication.selectedAnEnemy)
                 chooseEnemyForAssault(playerAttacker: player1, playerEnemy: player2)
             }
             if player2.characters.count > 0 {
@@ -22,6 +23,8 @@ class Fight {
                 print(communication.selectedAnAttacker)
                 communication.display2team(playerIndex: player2, playerNoIndex: player1)
                 attackersChoice(playerAttacker: player2)
+                print(communication.selectedAnEnemy)
+                chooseEnemyForAssault(playerAttacker: player2, playerEnemy: player1)
             }
         }
     }
@@ -64,34 +67,14 @@ class Fight {
         attackersChoice(playerAttacker: attacker)
         
     }
-    func displayTeam(player: Players, index: Bool) {
-        var i = 1
-        if index == true {
-            for perso in player.characters {
-                if perso.healer != nil {
-                    print("\n\(i).Nom: \(perso.name)\n Type: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n soin: \(perso.healer!)Pv par Soin")
-                } else {
-                    print("\n\(i)Nom: \(perso.name)\nType: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n Soin: Non")
-                }
-                i += 1
-            }
-        } else {
-            for perso in player.characters {
-                if perso.healer != nil {
-                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: \(perso.healer!)Pv par Soin")
-                } else {
-                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: NON")
-                }
-            }
-        }
-    }
     func chooseEnemyForAssault(playerAttacker: Players, playerEnemy: Players) {
+        communication.displayTeam(player: playerEnemy, index: true)
         if let attackerChoice = readLine() {
             switch attackerChoice {
             case String(1):
                 if playerEnemy.characters.count > 0 {
                     playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[0].idNumber]
-                    fight.assault(attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
+                    fight.assault(playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
@@ -99,7 +82,7 @@ class Fight {
             case String(2):
                 if playerEnemy.characters.count > 1 {
                     playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[1].idNumber]
-                    fight.assault(attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
+                    fight.assault(playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
@@ -107,7 +90,7 @@ class Fight {
             case String(3):
                 if playerEnemy.characters.count > 2 {
                     playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[2].idNumber]
-                    fight.assault(attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
+                    fight.assault(playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
@@ -118,8 +101,12 @@ class Fight {
             }
         }
     }
-    func assault(attacker: Characters, enemy: Characters) {
+    func assault(playerEnemy: Players, attacker: Characters, enemy: Characters) {
         enemy.life -= attacker.weaponDamages.rawValue
-        //stats de l'attaque
+        communication.attackInformation(playerEnemy: playerEnemy, attacker: attacker, enemy: enemy)
+        
+    }
+    func deleteCharacterArray(player: Players, character: Characters) {
+        player.characters.remove(at: character.idNumber)
     }
 }
