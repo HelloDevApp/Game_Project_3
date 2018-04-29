@@ -20,5 +20,4 @@ class Players {
     init(playerTeamNumber: Int) {
         self.playerTeamNumber = playerTeamNumber
     }
-    
 }

@@ -33,10 +33,6 @@ enum damages: Int {
     case gnome = 21
 }
 
-
-
-
-
 class Characters {
     var indexPosition: Int
     let idNumber: Int

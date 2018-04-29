@@ -15,17 +15,14 @@ class Communication {
     let magician = "\n2.Mage:\n Points de vie: 50\n Dégats: 9\n Soin: 12\n Arme: Dague soignante\n"
     let colossus = "\n3.Colosse:\n Points de vie: 110\n Dégats: 4\n Arme: Poing en fer\n"
     let gnome = "\n4.Nain:\n Points de vie: 14\n Dégats: 21\n Arme: Arbalette\n"
-    
     // MARK:-Errors
     let errorTerm = "\nErreur valeur incorrecte\n"
     let errorNameIsEmpty = "Erreur! veuillez entrer un nom!"
     let nameAlreadyExists = "\nCe nom est deja utilisé, veuillez en choisir un autre!\n"
     let noCharacterValue = "Cette valeur ne contient pas de personnage"
     let ignoreValue = "Erreur! Votre valeur n'a pas été prise en compte. C'est toujours à votre tour"
-    
     //MARK:-Help Message
     let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour.\n"
-    
     //MARK:-Fight
     let fightReady = "C'est parti, le combat peut commencer!"
     let selectedAnAttacker = "Choisissez le personnage de votre équipe que vous souhaitez utiliser pour l'attaque."
@@ -66,7 +63,6 @@ class Communication {
     func teamFull(player: Players) {
         print("\nL'équipe du Joueur \(player.playerTeamNumber) est au complet!\n")
     }
-    
     //MARK:-Fight func
     func playerTurn(player: Players) {
         print("Joueur \(player.playerTeamNumber) c'est a vous!")
@@ -75,7 +71,7 @@ class Communication {
         print("\(communication.sceneries2)\n"
             + "\(communication.sceneries4)\n"
             + "\(communication.sceneries2)")
-        
+
         print(playerIndex.name! + " voici vos personnages:")
         communication.displayTeam(player: playerIndex, index: true)
         
@@ -134,7 +130,6 @@ class Communication {
                     print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: \(perso.healer!)Pv par Soin")
                 } else {
                     print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: NON")
-                    
                     //'for test'print(perso.idNumber)
                     //'for test'print(perso.indexPosition)
                 }
@@ -152,7 +147,8 @@ class Communication {
             print(livingEnemy)
         }
     }
+    //Finished game
     func showTheWinner(player: Players) {
-        print("L'équipe qui sort vainqueur de la partie est : \(player.name) !!")
+        print("L'équipe qui sort vainqueur de la partie est : \(player.name!) !!")
     }
 }

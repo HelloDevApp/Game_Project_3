@@ -11,7 +11,7 @@ import Foundation
 class Game {
     
     var indexarrayPosition = 0
-   //MARK:-Composition Team func
+    //MARK:-Composition Team func
     //Answer team name
     func answerTeamName(player: Players) {
         // the player enters a name
@@ -128,9 +128,6 @@ class Game {
                     indexarrayPosition += 1
                 }
             }
-            
         }
     }
-    //MARK:-Fight Func
-    
 }

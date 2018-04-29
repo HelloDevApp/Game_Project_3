@@ -28,20 +28,15 @@ communication.messageTeamNameIs(player: player_1)
 communication.helpChooseCharacter(player: player_1)
 game.chooseCharacterTeam(player: player_1)
 communication.teamFull(player: player_1)
-
 //we display the message 'Player *: enter a name for your team'
 communication.messageRequestNameTeam(player: player_2)
 //°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
 game.answerTeamName(player: player_2)
 //we display the message  'player * your team is named \(nameTeam)'
-
 communication.messageTeamNameIs(player: player_2)
-
 communication.helpChooseCharacter(player: player_2)
 game.chooseCharacterTeam(player: player_2)
 communication.teamFull(player: player_2)
-
-
 print(communication.fightReady)
 fight.startFight(player1: player_1, player2: player_2)
 

@@ -65,7 +65,6 @@ class Fight {
         communication.enterNumberBetween(playerAttacker: attacker, playerEnemy: enemy, attackers: true, enemy: false)
         communication.display2team(playerIndex: attacker, playerNoIndex: enemy)
         attackersChoice(playerAttacker: attacker)
-        
     }
     func chooseEnemyForAssault(playerAttacker: Players, playerEnemy: Players) {
         communication.displayTeam(player: playerEnemy, index: true)
@@ -104,7 +103,6 @@ class Fight {
     func assault(playerEnemy: Players, attacker: Characters, enemy: Characters) {
         enemy.life -= attacker.weaponDamages.rawValue
         communication.attackInformation(playerEnemy: playerEnemy, attacker: attacker, enemy: enemy)
-        
     }
     func deleteCharacterArray(player: Players, character: Characters) {
         player.characters.remove(at: character.indexPosition)
