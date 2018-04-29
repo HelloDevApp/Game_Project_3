@@ -9,8 +9,8 @@
 import Foundation
 class Fight {
     func startFight(player1: Players, player2: Players) {
-        while player1.characters.count != 0 || player2.characters.count != 0 {
-            if player1.characters.count > 0 {
+        while player1.characters.count != 0 && player2.characters.count != 0 {
+            if player1.characters.count > 0 && player2.characters.count != 0 {
                 communication.playerTurn(player: player1)
                 print(communication.selectedAnAttacker)
                 communication.display2team(playerIndex: player1, playerNoIndex: player2)
@@ -18,7 +18,7 @@ class Fight {
                 print(communication.selectedAnEnemy)
                 chooseEnemyForAssault(playerAttacker: player1, playerEnemy: player2)
             }
-            if player2.characters.count > 0 {
+            if player2.characters.count > 0 && player1.characters.count != 0 {
                 communication.playerTurn(player: player2)
                 print(communication.selectedAnAttacker)
                 communication.display2team(playerIndex: player2, playerNoIndex: player1)
@@ -26,6 +26,11 @@ class Fight {
                 print(communication.selectedAnEnemy)
                 chooseEnemyForAssault(playerAttacker: player2, playerEnemy: player1)
             }
+        }
+        if player2.characters.count == 0 {
+            communication.showTheWinner(player: player1)
+        } else {
+            communication.showTheWinner(player: player2)
         }
     }
     func attackersChoice(playerAttacker: Players) {
