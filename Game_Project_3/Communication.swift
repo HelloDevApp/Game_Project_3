@@ -149,6 +149,6 @@ class Communication {
     }
     //Finished game
     func showTheWinner(player: Players) {
-        print("L'équipe qui sort vainqueur de la partie est : \(player.name!) !!")
+        print("\(player.name!) est vainqueur de la partie!!")
     }
 }
