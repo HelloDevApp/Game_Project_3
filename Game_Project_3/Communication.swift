@@ -34,7 +34,8 @@ class Communication {
     let sceneries4 = "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
     let textSeparation = "\n\n"
     let bigTextSeparation = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-    
+    //MARK:-Chest
+    let chestAppears = "Un coffre de ravitaillement apparait!"
     //MARK:-Team Composition Func
     func messageRequestNameTeam(player: Players) {
         print("\nJoueur \(player.playerTeamNumber): Entrez un nom pour votre équipe.\n")
@@ -54,7 +55,7 @@ class Communication {
                 + helpMessageChooseCharacter)
         }
     }
-    func messageNamedCharacter(character: type) -> String {
+    func messageNamedCharacter(character: Type) -> String {
         return "\nVous avez choisi un \(character.rawValue), donnez lui un nom\n"
     }
     func chooseAgainCharacter(player: Players) {
@@ -114,11 +115,11 @@ class Communication {
     func displayTeam(player: Players, index: Bool) {
         var i = 1
         if index == true {
-            for perso in player.characters {
-                if perso.healer != nil {
-                    print("\n\(i). Nom: \(perso.name)\n Type: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n soin: \(perso.healer!)Pv par Soin")
+            for character in player.characters {
+                if character.healer != nil {
+                    print("\n\(i). Nom: \(character.name)\n Type: \(character.type.rawValue)\n Vie: \(character.life)Pv\n Dégats: \(character.weaponDamages)Pv\n soin: \(character.healer!)Pv par Soin")
                 } else {
-                    print("\n\(i). Nom: \(perso.name)\nType: \(perso.type.rawValue)\n Vie: \(perso.life)Pv\n Dégats: \(perso.weaponDamages.rawValue)Pv\n Soin: Non")
+                    print("\n\(i). Nom: \(character.name)\nType: \(character.type.rawValue)\n Vie: \(character.life)Pv\n Dégats: \(character.weaponDamages)Pv\n Soin: Non")
                     //'for test'print(perso.idNumber)
                     //'for test'print(perso.indexPosition)
                 }
@@ -127,9 +128,9 @@ class Communication {
         } else {
             for perso in player.characters {
                 if perso.healer != nil {
-                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: \(perso.healer!)Pv par Soin")
+                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages)Pv\nSoin: \(perso.healer!)Pv par Soin")
                 } else {
-                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages.rawValue)Pv\nSoin: NON")
+                    print("\nNom: \(perso.name)\nType: \(perso.type.rawValue)\nVie: \(perso.life)Pv\nDégats: \(perso.weaponDamages)Pv\nSoin: NON")
                     //'for test'print(perso.idNumber)
                     //'for test'print(perso.indexPosition)
                 }
@@ -137,7 +138,7 @@ class Communication {
         }
     }
     func attackInformation(playerEnemy: Players, attacker: Characters, enemy: Characters) {
-        let livingEnemy = "\n\n\n\n\n\(attacker.name) attaque \(enemy.name) et lui enlève \(attacker.weaponDamages.rawValue)pv"
+        let livingEnemy = "\n\n\n\n\n\(attacker.name) attaque \(enemy.name) et lui enlève \(attacker.weaponDamages)pv"
         let enemyIsDead = "\n\(enemy.name) n'as plus de vie et succombe de ses blessures"
         if enemy.life <= 0 {
             print(livingEnemy + enemyIsDead)

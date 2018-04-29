@@ -72,7 +72,7 @@ class Game {
             }
         }
     }
-    func nameCharacters(player: Players, type: type) {
+    func nameCharacters(player: Players, type: Type) {
         if let nameCharacter = readLine() {
             if player_1.charactersNames.contains(nameCharacter) || player_2.charactersNames.contains(nameCharacter) {
                 print(communication.nameAlreadyExists)
@@ -86,11 +86,11 @@ class Game {
             }
         }
     }
-    func createCharacter(player: Players, type: type, nameCharacter: String) {
+    func createCharacter(player: Players, type: Type, nameCharacter: String) {
         switch type {
         case .soldier:
             if indexarrayPosition <= 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.soldier.rawValue, weaponDamages: damages.soldier, healer: nil, weapon: weapons.soldier)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: Life.soldier.rawValue, weaponDamages: Damages.soldier.rawValue, healer: nil, weapon: Weapons.soldier.rawValue)
                 player.characters.append(character)
                 if indexarrayPosition == 2 {
                     indexarrayPosition = 0
@@ -100,7 +100,7 @@ class Game {
             }
         case .magician:
             if indexarrayPosition <= 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.magician.rawValue, weaponDamages: damages.magician, healer: 10, weapon: weapons.magician)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: Life.magician.rawValue, weaponDamages: Damages.magician.rawValue, healer: 10, weapon: Weapons.magician.rawValue)
                 player.characters.append(character)
                 if indexarrayPosition == 2 {
                     indexarrayPosition = 0
@@ -110,7 +110,7 @@ class Game {
             }
         case .colossus:
             if indexarrayPosition <= 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.colossus.rawValue, weaponDamages: damages.colossus, healer: nil, weapon: weapons.colossus)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: Life.colossus.rawValue, weaponDamages: Damages.colossus.rawValue, healer: nil, weapon: Weapons.colossus.rawValue)
                 player.characters.append(character)
                 if indexarrayPosition == 2 {
                     indexarrayPosition = 0
@@ -120,7 +120,7 @@ class Game {
             }
         case .gnome:
             if indexarrayPosition <= 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: life.gnome.rawValue, weaponDamages: damages.gnome, healer: nil, weapon: weapons.gnome)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: Life.gnome.rawValue, weaponDamages: Damages.gnome.rawValue, healer: nil, weapon: Weapons.gnome.rawValue)
                 player.characters.append(character)
                 if indexarrayPosition == 2 {
                     indexarrayPosition = 0
