@@ -26,7 +26,9 @@ class Communication {
     //MARK:-Fight
     let fightReady = "C'est parti, le combat peut commencer!"
     let selectedAnAttacker = "Choisissez le personnage de votre équipe que vous souhaitez utiliser pour l'attaque."
+    let assaultOrHeal = "que voulez vous faire? \n1.Attaquer \n2.Soigner un personnage \n3.soigner tout les personnages vivant de votre équipe"
     let selectedAnEnemy = "Choisissez maintenant le personnage adverse a attaquer"
+    let selectedCharaToHeal = "Choisissez le personnage de votre équipe que vous voulez soigner"
     //MARK:-Sceneries
     let sceneries1 = "=========================================================================================="
     let sceneries2 = "------------------------------------------------------------------------------------------"
@@ -138,14 +140,29 @@ class Communication {
         }
     }
     func attackInformation(playerEnemy: Players, attacker: Characters, enemy: Characters) {
-        let livingEnemy = "\n\n\n\n\n\(attacker.name) attaque \(enemy.name) et lui enlève \(attacker.weaponDamages)pv"
+        let infoAssault = "\n\n\n\n\n\(attacker.name) attaque \(enemy.name) et lui enlève \(attacker.weaponDamages)pv"
         let enemyIsDead = "\n\(enemy.name) n'as plus de vie et succombe de ses blessures"
         if enemy.life <= 0 {
-            print(livingEnemy + enemyIsDead)
+            print(infoAssault + enemyIsDead)
             fight.deleteCharacterArray(player: playerEnemy, character: enemy)
             fight.changeIndexPosition(player: playerEnemy)
         } else {
-            print(livingEnemy)
+            print(infoAssault)
+        }
+    }
+    func healInformation(player: Players, healer: Characters, characterToHeal: Characters, healMultiple: Bool) {
+        if healMultiple == true {
+            if healer.name == characterToHeal.name {
+                print("\(characterToHeal.name) se soigne et recupère \(healer.healer!/player.characters.count)pv")
+            } else {
+                print("\(healer.name) soigne \(characterToHeal.name), il recupère \(healer.healer!/player.characters.count)pv")
+            }
+        } else {
+            if healer.name == characterToHeal.name {
+                print("\(characterToHeal.name) se soigne et recupère \(healer.healer!)pv")
+            } else {
+                print("\(healer.name) soigne \(characterToHeal.name), il recupère \(healer.healer!)pv")
+            }
         }
     }
     //Finished game
