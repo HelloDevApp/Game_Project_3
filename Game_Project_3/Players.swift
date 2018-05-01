@@ -17,6 +17,11 @@ class Players {
     var enemyCharacter: Characters?
     var numberTeamCharacters = 0
     
+    var numberAssault = [0,0,0]
+    var numberHeal = [0,0,0]
+    var totalWeaponDamages = [0,0,0]
+    var totalNumberChest = 0
+    
     init(playerTeamNumber: Int) {
         self.playerTeamNumber = playerTeamNumber
     }

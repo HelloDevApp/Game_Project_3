@@ -9,8 +9,7 @@
 import Foundation
 
 class Statistics {
-    var numberAssault = [0,0,0]
-    var numberHeal = [0,0,0]
-    var totalWeaponDamages = [0,0,0]
-    var totalNumberChest = 0
+    func DiplaysStats(player: Players) {
+        
+    }
 }

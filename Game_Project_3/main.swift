@@ -18,6 +18,9 @@ let player_2 = Players(playerTeamNumber: 2)
 let fight = Fight()
 //we create a chest
 let chest = Chest()
+//create statistics for player 1 and player 2
+let statsP1 = Statistics()
+let statsP2 = Statistics()
 
 //we display the message 'Choose and name 3 characters each your turn'
 print(communication.choose3Characters)
