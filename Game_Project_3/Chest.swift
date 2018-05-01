@@ -12,7 +12,13 @@ class Chest {
     let weaponsBonus: [WeaponsBonus: Int] = [.woodenArch: 14, .gun: 16, .uAV: Int(arc4random_uniform(3))+17, .c4: Int(arc4random_uniform(3))+19]
     let magicianBonus: [MagicianBonus: Int] = [.plasters: 14, .medicalKit: 16, .smallPotion: Int(arc4random_uniform(3))+17, .BigPotion: Int(arc4random_uniform(3))+19]
     
-    
+    func chestRandom(player: Players) {
+        let IndexchestAppear: Int = Int(arc4random_uniform(UInt32(6)))
+        if IndexchestAppear == 2 || IndexchestAppear == 1 {
+            chest.chestAppears(attackers: player.attackerCharacter!)
+            player.totalNumberChest += 1
+        }
+    }
     func chestAppears(attackers: Characters) {
         let indexWeaponsBonus: Int = Int(arc4random_uniform(UInt32(weaponsBonus.count)))
         let indexMagicianBonus: Int = Int(arc4random_uniform(UInt32(magicianBonus.count)))
@@ -31,7 +37,7 @@ class Chest {
             //print message discovery of the chest
             print(communication.chestAppears)
             attackers.weapon = arrayMagicianBonus.key.rawValue
-            attackers.weaponDamages = arrayMagicianBonus.value
+            attackers.healer! = arrayMagicianBonus.value
             discoverWeaponBonusOrMagicianBonus(character: attackers)
         }
     }
@@ -48,7 +54,7 @@ class Chest {
         if character.type == .colossus {
             character.weaponDamages = Damages.colossus.rawValue
         } else if character.type == .magician {
-            character.weaponDamages = Damages.magician.rawValue
+            character.healer = Damages.magicianHealer.rawValue
         } else if character.type == .colossus {
             character.weaponDamages = Damages.colossus.rawValue
         } else {
