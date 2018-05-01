@@ -14,6 +14,7 @@
 		5241EE3E208F89ED00674D8C /* Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5241EE3D208F89ED00674D8C /* Communication.swift */; };
 		5241EE6020936A5800674D8C /* Fight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5241EE5F20936A5800674D8C /* Fight.swift */; };
 		5241EE622096578E00674D8C /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5241EE612096578E00674D8C /* Chest.swift */; };
+		5241EE642098873B00674D8C /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5241EE632098873B00674D8C /* Statistics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		5241EE3D208F89ED00674D8C /* Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communication.swift; sourceTree = "<group>"; };
 		5241EE5F20936A5800674D8C /* Fight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fight.swift; sourceTree = "<group>"; };
 		5241EE612096578E00674D8C /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
+		5241EE632098873B00674D8C /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				5241EE37208F704000674D8C /* Characters.swift */,
 				5241EE3B208F853900674D8C /* Game.swift */,
 				5241EE5F20936A5800674D8C /* Fight.swift */,
+				5241EE632098873B00674D8C /* Statistics.swift */,
 				5241EE3D208F89ED00674D8C /* Communication.swift */,
 				5241EE612096578E00674D8C /* Chest.swift */,
 				5241EE39208F80EF00674D8C /* Players.swift */,
@@ -144,6 +147,7 @@
 				5241EE31208F6F8500674D8C /* main.swift in Sources */,
 				5241EE38208F704000674D8C /* Characters.swift in Sources */,
 				5241EE622096578E00674D8C /* Chest.swift in Sources */,
+				5241EE642098873B00674D8C /* Statistics.swift in Sources */,
 				5241EE3C208F853900674D8C /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
