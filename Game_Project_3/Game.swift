@@ -100,7 +100,7 @@ class Game {
             }
         case .magician:
             if indexarrayPosition <= 3 {
-                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: Life.magician.rawValue, weaponDamages: Damages.magician.rawValue, healer: 10, weapon: Weapons.magician.rawValue)
+                let character = Characters(indexPosition: indexarrayPosition, idNumber: indexarrayPosition, type: type, name: nameCharacter, life: Life.magician.rawValue, weaponDamages: Damages.magicianWeapon.rawValue, healer: Damages.magicianHealer.rawValue, weapon: Weapons.magician.rawValue)
                 player.characters.append(character)
                 if indexarrayPosition == 2 {
                     indexarrayPosition = 0
