@@ -124,6 +124,9 @@ class Fight {
         enemy.life -= attacker.weaponDamages
         communication.attackInformation(playerEnemy: playerEnemy, attacker: attacker, enemy: enemy)
     }
+    func heal(healer: Characters, characterToHeal: Characters) {
+        characterToHeal.life += healer.healer!
+    }
     func deleteCharacterArray(player: Players, character: Characters) {
         player.characters.remove(at: character.indexPosition)
     }
