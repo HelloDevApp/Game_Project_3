@@ -19,8 +19,8 @@ let fight = Fight()
 //we create a chest
 let chest = Chest()
 //create statistics for player 1 and player 2
-let statsP1 = Statistics()
-let statsP2 = Statistics()
+let stats = Statistics()
+
 
 //we display the message 'Choose and name 3 characters each your turn'
 print(communication.choose3Characters)
@@ -44,6 +44,7 @@ game.chooseCharacterTeam(player: player_2)
 communication.teamFull(player: player_2)
 print(communication.fightReady)
 fight.startFight(player1: player_1, player2: player_2)
-
+stats.DiplaysStats(player: player_1)
+stats.DiplaysStats(player: player_2)
 
 
