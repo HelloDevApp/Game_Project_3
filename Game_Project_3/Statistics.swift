@@ -11,22 +11,26 @@ import Foundation
 class Statistics {
     func DiplaysStats(player: Players) {
         var index = 0
-        print(communication.yourStats + "\n")
-        print("Joueur \(player.playerTeamNumber):\n")
-        print("Nombre de coffre: \(player.totalNumberChest)")
+        print(communication.sceneries1)
+        print(communication.sceneries1)
+        print("\nJoueur \(player.playerTeamNumber), \(communication.yourStats)\n")
+        print("Nombre de coffre: \(player.totalNumberChest)\n")
+        
         for _ in 0...2 {
-            print(communication.sceneries3)
+            print(communication.sceneries4)
             print("\(player.charactersNames[index]):")
-            print("Total Dégâts: \(player.totalWeaponDamages[index])")
             print("Nombre D'attaques: \(player.numberAssault[index])")
+            print("Total Dégâts: \(player.totalWeaponDamages[index])")
             if player.numberHeal[index] != 0 || player.numberHealMultiple[index] != 0 {
                 print("Nombre de soins: \(player.numberHeal[index])")
                 print("Nombre de soins multiples: \(player.numberHealMultiple[index])")
-                print(communication.sceneries3 + "\n")
+                print(communication.sceneries4 + "\n")
             } else {
-                print(communication.sceneries3 + "\n")
+                print(communication.sceneries4 + "\n")
             }
             index += 1
         }
+        print(communication.sceneries1)
+        print(communication.sceneries1 + "\n")
     }
 }
