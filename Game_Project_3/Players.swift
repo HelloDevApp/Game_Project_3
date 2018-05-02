@@ -19,6 +19,8 @@ class Players {
     
     var numberAssault = [0,0,0]
     var numberHeal = [0,0,0]
+    var numberHealMultiple = [0,0,0]
+    var totalHealPV = [0,0,0]
     var totalWeaponDamages = [0,0,0]
     var totalNumberChest = 0
     
