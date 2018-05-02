@@ -38,6 +38,8 @@ class Communication {
     let bigTextSeparation = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     //MARK:-Chest
     let chestAppears = "Un coffre de ravitaillement apparait!"
+    //MARK:-Stats
+    let yourStats = "Voici vos stats:"
     //MARK:-Team Composition Func
     func messageRequestNameTeam(player: Players) {
         print("\nJoueur \(player.playerTeamNumber): Entrez un nom pour votre équipe.\n")
