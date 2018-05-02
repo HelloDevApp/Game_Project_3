@@ -45,15 +45,27 @@ enum MagicianBonus: String {
     case smallPotion = "Petite Potions"
     case BigPotion = "Grande Potions"
 }
+//class that is used to create characters
+//all properties of this class are initialized when creating character instances
 class Characters {
+    
+    //will contain the position index of a character in real time
     var indexPosition: Int
+    //the id number of a character serves as a number plate to display the stats of the corresponding character
     let idNumber: Int
+    //enumeration that would define the character type
     var type: Type
+    //contain the character's name
     var name: String
+    //contains the life of the characters
     var life: Int
+    //contains the damage the character's weapon causes
     var weaponDamages: Damages.RawValue
+    //contains the number of health points that the heal regenerates
     var healer: Int?
+    //contains the names of the weapons for each of the characters types
     var weapon: Weapons.RawValue
+    
     
     init(indexPosition: Int, idNumber: Int, type: Type, name: String, life: Int, weaponDamages: Int, healer: Int?, weapon: String) {
         self.indexPosition = indexPosition

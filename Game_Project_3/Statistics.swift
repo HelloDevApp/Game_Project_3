@@ -8,8 +8,12 @@
 
 import Foundation
 
+//the statistics class contains a single function that displays a player's statistics
 class Statistics {
+    
+    //function that displays the statistics at the end of the game
     func DiplaysStats(player: Players) {
+        //index that displays the corresponding stats of each character at the end of the game
         var index = 0
         print(communication.sceneries1)
         print(communication.sceneries1)
