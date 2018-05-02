@@ -150,6 +150,7 @@ class Fight {
     func assault(playerAttacker: Players, playerEnemy: Players, attacker: Characters, enemy: Characters) {
         enemy.life -= attacker.weaponDamages
         playerAttacker.numberAssault[attacker.idNumber] += 1
+        playerAttacker.totalWeaponDamages[attacker.idNumber] += attacker.weaponDamages
         communication.attackInformation(playerEnemy: playerEnemy, attacker: attacker, enemy: enemy)
     }
     func chooseCharaForHeal(player: Players) {
@@ -183,6 +184,7 @@ class Fight {
     func heal(player: Players,healer: Characters, characterToHeal: Characters) {
         characterToHeal.life += healer.healer!
         player.numberHeal[healer.idNumber] += 1
+        player.totalHealPV[healer.idNumber] += healer.healer!
         communication.healInformation(player: player, healer: healer, characterToHeal: characterToHeal, healMultiple: false)
     }
     func healMultiple(playerAttacker: Players, healer: Characters) {
@@ -190,6 +192,8 @@ class Fight {
             character.life += healer.healer! / playerAttacker.characters.count
             communication.healInformation(player: playerAttacker, healer: healer, characterToHeal: character, healMultiple: true)
         }
+        playerAttacker.numberHealMultiple[healer.idNumber] += 1
+        playerAttacker.totalHealPV[healer.idNumber] += healer.healer!
     }
     func deleteCharacterArray(player: Players, character: Characters) {
         player.characters.remove(at: character.indexPosition)
