@@ -12,13 +12,13 @@ class Communication {
     
     //MARK:-Characters
     //property that contains details about the soldier.
-    let soldier = "\n1.\(Type.soldier):\n Points de vie: \(Life.soldier)\n Dégats: \(Damages.soldier)\n Arme: \(Weapons.soldier)\n"
+    let soldier = "\n1.\(Type.soldier.rawValue):\n Points de vie: \(Life.soldier.rawValue)\n Dégats: \(Damages.soldier.rawValue)\n Arme: \(Weapons.soldier.rawValue)\n"
     //property that contains details about the magician
-    let magician = "\n2.\(Type.magician):\n Points de vie: \(Life.magician)\n Dégats: \(Damages.magicianWeapon)\n Soin: \(Damages.magicianHealer)\n Arme: \(Weapons.magician)\n"
+    let magician = "\n2.\(Type.magician.rawValue):\n Points de vie: \(Life.magician.rawValue)\n Dégats: \(Damages.magicianWeapon.rawValue)\n Soin: \(Damages.magicianHealer.rawValue)\n Arme: \(Weapons.magician.rawValue)\n"
     //property that contains details about the colossus
-    let colossus = "\n3.\(Type.colossus):\n Points de vie: \(Life.colossus)\n Dégats: \(Damages.colossus)\n Arme: \(Weapons.colossus)\n"
+    let colossus = "\n3.\(Type.colossus.rawValue):\n Points de vie: \(Life.colossus.rawValue)\n Dégats: \(Damages.colossus.rawValue)\n Arme: \(Weapons.colossus.rawValue)\n"
     //property that contains details about the gnome
-    let gnome = "\n4.\(Type.gnome):\n Points de vie: \(Life.gnome)\n Dégats: \(Damages.gnome)\n Arme: \(Weapons.gnome)\n"
+    let gnome = "\n4.\(Type.gnome.rawValue):\n Points de vie: \(Life.gnome.rawValue)\n Dégats: \(Damages.gnome.rawValue)\n Arme: \(Weapons.gnome.rawValue)\n"
     
     // MARK:-Errors
     //property that contains a simple error message
@@ -135,10 +135,10 @@ class Communication {
     func verifyTypeAttakers(player: Players, charactereNum: Int) {
         if player.characters[charactereNum].type != .magician {
             print(bigTextSeparation)
-            print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire")
+            print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire\n")
         } else {
             print(bigTextSeparation)
-            print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire ou effectuer un soin")
+            print("Vous allez utiliser \(player.characters[charactereNum].name) pour attaquer l'adversaire ou effectuer un soin\n")
         }
     }
     //contains a help message when choosing the attacker
@@ -212,9 +212,9 @@ class Communication {
     func healInformation(player: Players, healer: Characters, characterToHeal: Characters, healMultiple: Bool) {
         if healMultiple == true {
             if healer.name == characterToHeal.name {
-                print("\(characterToHeal.name) se soigne et recupère \(healer.healer!/player.characters.count)pv")
+                print("\(communication.bigTextSeparation)\(characterToHeal.name) se soigne et recupère \(healer.healer!/player.characters.count)pv")
             } else {
-                print("\(healer.name) soigne \(characterToHeal.name), il recupère \(healer.healer!/player.characters.count)pv")
+                print("\(communication.bigTextSeparation)\(healer.name) soigne \(characterToHeal.name), il recupère \(healer.healer!/player.characters.count)pv")
             }
         } else {
             if healer.name == characterToHeal.name {
