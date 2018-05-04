@@ -204,6 +204,7 @@ class Fight {
         player.numberHeal[healer.idNumber] += 1
         player.totalHealPV[healer.idNumber] += healer.healer!
         communication.healInformation(player: player, healer: healer, characterToHeal: characterToHeal, healMultiple: false)
+        print(communication.textSeparation)
     }
     //function that is used to heal a chosen character
     func healMultiple(playerAttacker: Players, healer: Characters) {
@@ -211,6 +212,7 @@ class Fight {
             character.life += healer.healer! / playerAttacker.characters.count
             communication.healInformation(player: playerAttacker, healer: healer, characterToHeal: character, healMultiple: true)
         }
+        print(communication.textSeparation)
         playerAttacker.numberHealMultiple[healer.idNumber] += 1
         playerAttacker.totalHealPV[healer.idNumber] += healer.healer!
     }
