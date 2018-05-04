@@ -24,14 +24,14 @@ enum Life: Int {
     case soldier = 100
     case magician = 50
     case colossus = 110
-    case gnome = 18
+    case gnome = 60
 }
 enum Damages: Int {
     case soldier = 10
-    case magicianWeapon = 9
+    case magicianWeapon = 8
     case magicianHealer = 12
-    case colossus = 8
-    case gnome = 19
+    case colossus = 9
+    case gnome = 15
 }
 enum WeaponsBonus: String {
     case woodenArch = "Arc-En-Bois"
