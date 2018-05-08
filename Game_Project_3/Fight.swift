@@ -7,9 +7,9 @@
 //
 
 import Foundation
-//the fight class contains all the properties and functions necessary for combat
+//the fight class contains all the properties and method necessary for combat
 class Fight {
-    //call function when players' teams are full and who launches a fight until a player has no more characters
+    //call method when players' teams are full and who launches a fight until a player has no more characters
     func startFight(player1: Players, player2: Players) {
         while player1.characters.count != 0 && player2.characters.count != 0 {
             if player1.characters.count > 0 && player2.characters.count != 0 {
@@ -81,14 +81,14 @@ class Fight {
             }
         }
     }
-    //this function is called if the player enters an incorrect caracter during the choice of an attacking character and who asks again to make a choice
+    //this method is called if the player enters an incorrect caracter during the choice of an attacking character and who asks again to make a choice
     func attackChoiceError(attacker: Players, enemy: Players) {
         print(communication.ignoreValue)
         communication.enterNumberBetween(playerAttacker: attacker, playerEnemy: enemy, attackers: true, enemy: false)
         communication.display2team(playerIndex: attacker, playerNoIndex: enemy)
         attackersChoice(playerAttacker: attacker, playerEnemy: enemy)
     }
-    //function that allows players to choose an enemy character to serve as an enemy during the attack
+    //method that allows players to choose an enemy character to serve as an enemy during the attack
     func chooseEnemyForAssault(playerAttacker: Players, playerEnemy: Players) {
         communication.displayTeam(player: playerEnemy, index: true)
         //the player chooses an enemy character
@@ -125,7 +125,7 @@ class Fight {
             }
         }
     }
-    //call function if the player enters an incorrect choice and asks him to make a correct one again
+    //call method if the player enters an incorrect choice and asks him to make a correct one again
     func chooseEnemyForAssaultError(playerAttacker: Players, playerEnemy: Players) {
         print(communication.ignoreValue)
         communication.enterNumberBetween(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attackers: false, enemy: true)
@@ -162,14 +162,14 @@ class Fight {
             }
         }
     }
-    //function used to launch the attack once the attacker and the enemy were chosen
+    //method used to launch the attack once the attacker and the enemy were chosen
     func assault(playerAttacker: Players, playerEnemy: Players, attacker: Characters, enemy: Characters) {
         enemy.life -= attacker.weaponDamages
         playerAttacker.numberAssault[attacker.idNumber] += 1
         playerAttacker.totalWeaponDamages[attacker.idNumber] += attacker.weaponDamages
         communication.attackInformation(playerEnemy: playerEnemy, attacker: attacker, enemy: enemy)
     }
-    //function that allows the player to choose a character from his team to heal. (replaces the moment or the player chosen an enemy)
+    //method that allows the player to choose a character from his team to heal. (replaces the moment or the player chosen an enemy)
     func chooseCharaForHeal(player: Players) {
         print(communication.selectedCharaToHeal)
         communication.displayTeam(player: player, index: true)
@@ -198,7 +198,7 @@ class Fight {
             }
         }
     }
-    //function that is used to heal once the character to heal is chosen
+    //method that is used to heal once the character to heal is chosen
     func heal(player: Players,healer: Characters, characterToHeal: Characters) {
         characterToHeal.life += healer.healer!
         player.numberHeal[healer.idNumber] += 1
@@ -206,7 +206,7 @@ class Fight {
         communication.healInformation(player: player, healer: healer, characterToHeal: characterToHeal, healMultiple: false)
         print(communication.textSeparation)
     }
-    //function that is used to heal a chosen character
+    //method that is used to heal a chosen character
     func healMultiple(playerAttacker: Players, healer: Characters) {
         for character in playerAttacker.characters {
             character.life += healer.healer! / playerAttacker.characters.count
@@ -216,13 +216,13 @@ class Fight {
         playerAttacker.numberHealMultiple[healer.idNumber] += 1
         playerAttacker.totalHealPV[healer.idNumber] += healer.healer!
     }
-    //function that is used to remove a character from a team when it is dead
+    //method that is used to remove a character from a team when it is dead
     func deleteCharacterArray(player: Players, character: Characters) {
         player.characters.remove(at: character.indexPosition)
     }
-    //function that is used to refresh the positon index of characters in the board just after deleting a dead character
+    //method that is used to refresh the positon index of characters in the board just after deleting a dead character
     func changeIndexPosition(player: Players) {
-        //i is used as an index to start from 0 every time the function is called and incremented at each loop turn
+        //i is used as an index to start from 0 every time the method is called and incremented at each loop turn
         var i = 0
         for character in player.characters {
             character.indexPosition = i

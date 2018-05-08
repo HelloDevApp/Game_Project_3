@@ -17,7 +17,7 @@ class Game {
     //MARK:-Composition Team func
     //=================================================
     
-    //function that allows the player to enter a name for his team
+    //method that allows the player to enter a name for his team
     func answerTeamName(player: Players) {
         //the player enters a name for his team
         if let nameTeam = readLine() {
@@ -41,7 +41,7 @@ class Game {
         print(communication.gnome)
     }
     
-    //the player makes his choice and the function manages the various cases of creation of characters as well as the possible cases of errors
+    //the player makes his choice and the method manages the various cases of creation of characters as well as the possible cases of errors
     func answerChoiceCharacterTeam(player: Players) {
         //the player makes his choice
         if let choiceCharacter = readLine() {
@@ -68,7 +68,7 @@ class Game {
             }
         }
     }
-    /* function which takes a player as a parameter to avoid code repetition and which groups the following three actions: 1. displays the available character types 2. the player makes his choice. 3.name the character + character creation */
+    /* method which takes a player as a parameter to avoid code repetition and which groups the following three actions: 1. displays the available character types 2. the player makes his choice. 3.name the character + character creation */
     func chooseCharacterTeam(player: Players) {
         while player.numberTeamCharacters < 3 {
             //we display the type of characters
@@ -81,7 +81,7 @@ class Game {
             }
         }
     }
-    //function that is used to name the character chosen during the team composition then who creates the characters with the type previously chosen
+    //method that is used to name the character chosen during the team composition then who creates the characters with the type previously chosen
     func nameCharacters(player: Players, type: Type) {
         //the player chooses a name for the type of characters chosen
         if let nameCharacter = readLine() {
@@ -97,7 +97,7 @@ class Game {
             }
         }
     }
-    //function to create and add a character in the player's character array + manage character position indexes in the array
+    //method to create and add a character in the player's character array + manage character position indexes in the array
     func createCharacter(player: Players, type: Type, nameCharacter: String) {
         switch type {
         case .soldier:

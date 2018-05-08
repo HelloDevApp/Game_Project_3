@@ -8,10 +8,10 @@
 
 import Foundation
 
-//the statistics class contains a single function that displays a player's statistics
+//the statistics class contains a single method that displays a player's statistics
 class Statistics {
     
-    //function that displays the statistics at the end of the game
+    //method that displays the statistics at the end of the game
     func DiplaysStats(player: Players) {
         //index that displays the corresponding stats of each character at the end of the game
         var index = 0
