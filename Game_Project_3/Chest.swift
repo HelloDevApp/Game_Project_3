@@ -10,7 +10,7 @@ import Foundation
 //
 class Chest {
     //dictionnary that contains bonus weapons and name weapons for all character types except the magician
-    let weaponsBonus: [WeaponsBonus: Int] = [.woodenArch: 14, .gun: 16, .uAV: Int(arc4random_uniform(3))+17, .c4: Int(arc4random_uniform(3))+19]
+    let weaponsBonus: [WeaponsBonus: Int] = [.woodenArch: 48, .gun: 51, .uAV: Int(arc4random_uniform(3))+53, .c4: Int(arc4random_uniform(3))+56]
     //dictionnary that contains bonus heal and names weapons for magician
     let magicianBonus: [MagicianBonus: Int] = [.plasters: 14, .medicalKit: 16, .smallPotion: Int(arc4random_uniform(3))+17, .BigPotion: Int(arc4random_uniform(3))+19]
     
