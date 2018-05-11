@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 //the player class contains all the properties and methods necessary to create a player
 class Players {
     //property that will contain the player's team number

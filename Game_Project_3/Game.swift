@@ -8,6 +8,7 @@
 
 import Foundation
 
+//the Game class contains the methods used to manage the first part of the game before starting the fight (ask the player to name his team, characters, etc...) 
 class Game {
     
     //contains the position index of a character in the array and increment by 1 for each character creation

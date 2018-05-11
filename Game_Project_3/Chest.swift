@@ -7,7 +7,8 @@
 //
 
 import Foundation
-//
+
+//the chest class has been defined to model a bonus safe and also contains several methods to manage its appearance
 class Chest {
     //dictionnary that contains bonus weapons and name weapons for all character types except the magician
     let weaponsBonus: [WeaponsBonus: Int] = [.woodenArch: 48, .gun: 51, .uAV: Int(arc4random_uniform(3))+53, .c4: Int(arc4random_uniform(3))+56]
@@ -38,24 +39,14 @@ class Chest {
             print(communication.chestAppears)
             attackers.weapon = arrayWeaponsBonus.key.rawValue
             attackers.weaponDamages = arrayWeaponsBonus.value
-            discoverWeaponBonusOrMagicianBonus(character: attackers)
+            communication.discoverWeaponBonusOrMagicianBonus(character: attackers)
             
         } else {
             //print message discovery of the chest
             print(communication.chestAppears)
             attackers.weapon = arrayMagicianBonus.key.rawValue
             attackers.healer! = arrayMagicianBonus.value
-            discoverWeaponBonusOrMagicianBonus(character: attackers)
-        }
-    }
-    //allows you to display the characters' finds when they open the chest
-    func discoverWeaponBonusOrMagicianBonus(character: Characters) {
-        if character.type != .magician {
-            print("En ouvrant le coffre \(character.name) à trouvé un \(character.weapon)\nDégats: \(character.weaponDamages)Pv\n")
-            print("\n\(character.name) s'équipe de la nouvelle arme le temps de l'attaque.\n")
-        } else {
-            print("En ouvrant le coffre \(character.name) a trouvé des \(character.weapon)\nSoin: \(character.healer!)Pv.\n")
-            print("\n\(character.name) s'équipe du nouvel equipement le temps de l'attaque.\n")
+            communication.discoverWeaponBonusOrMagicianBonus(character: attackers)
         }
     }
     //is used to give back the classic weapon corresponding to the character who finished the attack (only if the character was equipped with a bonus weapon during the attack)

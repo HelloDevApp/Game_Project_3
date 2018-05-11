@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 //we create a communication instance to be used.
 let communication = Communication()
 //we create a game
@@ -52,7 +53,7 @@ print(communication.fightReady)
 //the fight starts.
 fight.startFight(player1: player_1, player2: player_2)
 //display game stats for each player
-fight.DiplaysStats(player: player_1)
-fight.DiplaysStats(player: player_2)
+communication.DiplaysStats(player: player_1)
+communication.DiplaysStats(player: player_2)
 
 

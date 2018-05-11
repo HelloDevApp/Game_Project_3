@@ -45,6 +45,7 @@ enum MagicianBonus: String {
     case smallPotion = "Petite Potions"
     case BigPotion = "Grande Potions"
 }
+
 //class that is used to create characters
 //all properties of this class are initialized when creating character instances
 class Characters {

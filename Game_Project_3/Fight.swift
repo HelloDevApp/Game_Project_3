@@ -7,8 +7,10 @@
 //
 
 import Foundation
+
 //the fight class contains all the properties and method necessary for combat
 class Fight {
+    
     //call method when players' teams are full and who launches a fight until a player has no more characters
     func startFight(player1: Players, player2: Players) {
         while player1.characters.count != 0 && player2.characters.count != 0 {
@@ -101,6 +103,7 @@ class Fight {
                     fight.assault(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
+                    print(communication.selectedAnEnemy)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                 }
             case String(2):
@@ -109,6 +112,7 @@ class Fight {
                     fight.assault(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
+                    print(communication.selectedAnEnemy)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                 }
             case String(3):
@@ -117,10 +121,11 @@ class Fight {
                     fight.assault(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
                     print(communication.errorTerm)
+                    print(communication.selectedAnEnemy)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                 }
             default:
-                print(communication.bigTextSeparation + communication.errorTerm)
+                print(communication.bigTextSeparation)
                 chooseEnemyForAssaultError(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
             }
         }
@@ -145,19 +150,25 @@ class Fight {
                 chest.resetWeaponsCharacter(character: attatckerOrHeal)
                 //Heal Case
             case String(2):
-                chooseCharaForHeal(player: playerAttacker)
-                chest.resetWeaponsCharacter(character: attatckerOrHeal)
+                if playerAttacker.characters.count > 1 {
+                    chooseCharaForHeal(player: playerAttacker)
+                    chest.resetWeaponsCharacter(character: attatckerOrHeal)
+                } else {
+                    
+                    heal(player: playerAttacker, healer: attatckerOrHeal, characterToHeal: attatckerOrHeal)
+                }
                 //Heal Multiple Case
             case String(3):
                 if playerAttacker.characters.count > 1 {
                     fight.healMultiple(playerAttacker: playerAttacker, healer: attatckerOrHeal)
                     chest.resetWeaponsCharacter(character: attatckerOrHeal)
                 } else {
-                    print(communication.errorTerm)
-                    choiceMagician(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attatckerOrHeal: attatckerOrHeal)
+                    print(communication.oneCharacterToHeal)
+                    fight.healMultiple(playerAttacker: playerAttacker, healer: attatckerOrHeal)
+                    chest.resetWeaponsCharacter(character: attatckerOrHeal)
                 }
             default:
-                print(communication.errorTerm)
+                print(communication.errorTerm + "\n" + communication.choiceMagicianErrorValue)
                 choiceMagician(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attatckerOrHeal: attatckerOrHeal)
             }
         }
@@ -183,6 +194,7 @@ class Fight {
                     fight.heal(player: player, healer: player.attackerCharacter!, characterToHeal: player.characters[1])
                 } else {
                     print(communication.errorTerm)
+                    print(communication.selectedCharaToHeal)
                     chooseCharaForHeal(player: player)
                 }
             case String(3):
@@ -190,10 +202,12 @@ class Fight {
                     fight.heal(player: player, healer: player.attackerCharacter!, characterToHeal: player.characters[2])
                 } else {
                     print(communication.errorTerm)
+                    print(communication.selectedCharaToHeal)
                     chooseCharaForHeal(player: player)
                 }
             default:
                 print(communication.errorTerm)
+                print(communication.selectedCharaToHeal)
                 chooseCharaForHeal(player: player)
             }
         }
@@ -208,11 +222,12 @@ class Fight {
     }
     //method that is used to heal a chosen character
     func healMultiple(playerAttacker: Players, healer: Characters) {
+        print(communication.textSeparation + communication.textSeparation)
         for character in playerAttacker.characters {
             character.life += healer.healer! / playerAttacker.characters.count
             communication.healInformation(player: playerAttacker, healer: healer, characterToHeal: character, healMultiple: true)
         }
-        print(communication.textSeparation)
+        print(communication.textSeparation + communication.textSeparation)
         playerAttacker.numberHealMultiple[healer.idNumber] += 1
         playerAttacker.totalHealPV[healer.idNumber] += healer.healer!
     }
@@ -228,31 +243,5 @@ class Fight {
             character.indexPosition = i
             i += 1
         }
-    }
-    //method that displays the statistics at the end of the game
-    func DiplaysStats(player: Players) {
-        //index that displays the corresponding stats of each character at the end of the game
-        var index = 0
-        print(communication.sceneries1)
-        print(communication.sceneries1)
-        print("\nJoueur \(player.playerTeamNumber), \(communication.yourStats)\n")
-        print("Nombre de coffre: \(player.totalNumberChest)\n")
-        
-        for _ in 0...2 {
-            print(communication.sceneries4)
-            print("\(player.charactersNames[index]):")
-            print("Nombre D'attaques: \(player.numberAssault[index])")
-            print("Total Dégâts: \(player.totalWeaponDamages[index])")
-            if player.numberHeal[index] != 0 || player.numberHealMultiple[index] != 0 {
-                print("Nombre de soins: \(player.numberHeal[index])")
-                print("Nombre de soins multiples: \(player.numberHealMultiple[index])")
-                print(communication.sceneries4 + "\n")
-            } else {
-                print(communication.sceneries4 + "\n")
-            }
-            index += 1
-        }
-        print(communication.sceneries1)
-        print(communication.sceneries1 + "\n")
     }
 }

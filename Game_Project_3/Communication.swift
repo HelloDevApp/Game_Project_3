@@ -7,7 +7,8 @@
 //
 
 import Foundation
-//the communication class contains all the messages to display while using the program
+
+//the communication class contains all messages to display to users
 class Communication {
     
     //MARK:-Characters
@@ -30,7 +31,9 @@ class Communication {
     //contains a error message value without characters
     let noCharacterValue = "Cette valeur ne contient pas de personnage"
     //contains the message value not taken into account
-    let ignoreValue = "Erreur! Votre valeur n'a pas été prise en compte. C'est toujours à votre tour"
+    let ignoreValue = "\n\nErreur! Votre valeur n'a pas été prise en compte. C'est toujours à votre tour"
+    //properties used to display a help message when the user enters an incorrect value at some point in the program
+    let valueForChoice = "\nEntrer une valeur entre 1 et 3 pour faire un choix"
     
     //MARK:-Help Message
     //contains a help message to inform the user about the game's progress
@@ -40,13 +43,19 @@ class Communication {
     //contains the message that the fight is ready to be started
     let fightReady = "C'est parti, le combat peut commencer!"
     //contains a help message to choose the attacking character
-    let selectedAnAttacker = "Choisissez le personnage de votre équipe que vous souhaitez utiliser pour l'attaque."
+    let selectedAnAttacker = "\n\nChoisissez le personnage de votre équipe que vous souhaitez utiliser pour l'attaque."
     //contains the message of the magician's choices
-    let assaultOrHeal = "que voulez vous faire? \n1.Attaquer \n2.Soigner un personnage \n3.soigner tout les personnages vivant de votre équipe"
-    //contient le message qui informe le joueur qu'il doit choisir l'ennemi a attaquer
+    let assaultOrHeal = "que voulez-vous faire? \n1.Attaquer \n2.Soigner un personnage \n3.soigner tous les personnages vivant de votre équipe"
+    //property containing a help message that appears when a player enters an unknown value 
+    let choiceMagicianErrorValue = "Entrez un chiffre entre 1 et 3 pour faire un choix.\n"
+    //contains the message that informs the player that he must choose the enemy to attack
     let selectedAnEnemy = "Choisissez maintenant le personnage adverse a attaquer"
     //contains the message informing the player that he must choose the player to heal
     let selectedCharaToHeal = "Choisissez le personnage de votre équipe que vous voulez soigner"
+    //contains the message that informs the player that he has only one character left to heal
+    let oneCharacterToHealMultiple = "\nIl ne vous reste plus qu'un seul personnage vivant, tous les soins lui seront attribués"
+    //contains the message that informs the player that he has only one character left to heal
+    let oneCharacterToHeal = "\nle dernier personnage vivant de votre equipe de votre equipe à été choisi pour le soin"
     
     //MARK:-Sceneries
     //contains a structure to make a message more readable
@@ -145,9 +154,13 @@ class Communication {
     func enterNumberBetween(playerAttacker: Players, playerEnemy: Players, attackers: Bool, enemy: Bool) {
         if attackers == true {
             if playerAttacker.characters.count > 1 {
+                print(textSeparation)
                 print("Entrez un chiffre entre 1 et \(playerAttacker.characters.count) pour choisir votre attaquant")
+                print(textSeparation)
             } else {
+                print(textSeparation)
                 print("tapez 1 pour choisir le dernier joueur vivant de votre équipe pour l'attaque")
+                print(textSeparation)
             }
         }
         if enemy == true {
@@ -212,9 +225,9 @@ class Communication {
     func healInformation(player: Players, healer: Characters, characterToHeal: Characters, healMultiple: Bool) {
         if healMultiple == true {
             if healer.name == characterToHeal.name {
-                print("\(communication.bigTextSeparation)\(characterToHeal.name) se soigne et recupère \(healer.healer!/player.characters.count)pv")
+                print("\(characterToHeal.name) se soigne et recupère \(healer.healer!/player.characters.count)pv")
             } else {
-                print("\(communication.bigTextSeparation)\(healer.name) soigne \(characterToHeal.name), il recupère \(healer.healer!/player.characters.count)pv")
+                print("\(healer.name) soigne \(characterToHeal.name), il recupère \(healer.healer!/player.characters.count)pv")
             }
         } else {
             if healer.name == characterToHeal.name {
@@ -224,9 +237,36 @@ class Communication {
             }
         }
     }
-    //Finished game
+    
+    //MARK:-Finished game
     //is used to display the winner of the game
     func showTheWinner(player: Players) {
         print("\(player.name!) est vainqueur de la partie!!")
+    }
+    //method that displays the statistics at the end of the game
+    func DiplaysStats(player: Players) {
+        //index that displays the corresponding stats of each character at the end of the game
+        var index = 0
+        print(communication.sceneries1)
+        print(communication.sceneries1)
+        print("\nJoueur \(player.playerTeamNumber), \(communication.yourStats)\n")
+        print("Nombre de coffre: \(player.totalNumberChest)\n")
+        
+        for _ in 0...2 {
+            print(communication.sceneries4)
+            print("\(player.charactersNames[index]):")
+            print("Nombre D'attaques: \(player.numberAssault[index])")
+            print("Total Dégâts: \(player.totalWeaponDamages[index])")
+            if player.numberHeal[index] != 0 || player.numberHealMultiple[index] != 0 {
+                print("Nombre de soins: \(player.numberHeal[index])")
+                print("Nombre de soins multiples: \(player.numberHealMultiple[index])")
+                print(communication.sceneries4 + "\n")
+            } else {
+                print(communication.sceneries4 + "\n")
+            }
+            index += 1
+        }
+        print(communication.sceneries1)
+        print(communication.sceneries1 + "\n")
     }
 }
