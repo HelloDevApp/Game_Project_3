@@ -38,6 +38,7 @@ class Communication {
     //MARK:-Help Message
     //contains a help message to inform the user about the game's progress
     let choose3Characters = "Choisissez et nommez 3 personnages chacun votre tour.\n"
+    let requestToRestart = "Que voulez-vous faire? \n1.Rejouer! \n2.Quitter!"
     
     //MARK:-Fight
     //contains the message that the fight is ready to be started
