@@ -102,8 +102,7 @@ class Fight {
                     playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[0].indexPosition]
                     fight.assault(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
-                    print(communication.errorTerm)
-                    print(communication.selectedAnEnemy)
+                    chooseEnemyForAssaultError(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                 }
             case String(2):
@@ -111,8 +110,7 @@ class Fight {
                     playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[1].indexPosition]
                     fight.assault(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
-                    print(communication.errorTerm)
-                    print(communication.selectedAnEnemy)
+                    chooseEnemyForAssaultError(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                 }
             case String(3):
@@ -120,21 +118,20 @@ class Fight {
                     playerAttacker.enemyCharacter = playerEnemy.characters[playerEnemy.characters[2].indexPosition]
                     fight.assault(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attacker: playerAttacker.attackerCharacter!, enemy: playerAttacker.enemyCharacter!)
                 } else {
-                    print(communication.errorTerm)
-                    print(communication.selectedAnEnemy)
+                    chooseEnemyForAssaultError(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                     chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
                 }
             default:
-                print(communication.bigTextSeparation)
                 chooseEnemyForAssaultError(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
+                chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
             }
         }
     }
     //call method if the player enters an incorrect choice and asks him to make a correct one again
     func chooseEnemyForAssaultError(playerAttacker: Players, playerEnemy: Players) {
-        print(communication.ignoreValue)
+        print(communication.bigTextSeparation)
+        print(communication.errorTerm)
         communication.enterNumberBetween(playerAttacker: playerAttacker, playerEnemy: playerEnemy, attackers: false, enemy: true)
-        chooseEnemyForAssault(playerAttacker: playerAttacker, playerEnemy: playerEnemy)
     }
     //if the attacking character is a magician he can choose between attacking, healing or performing a multiple healing
     func choiceMagician(playerAttacker: Players, playerEnemy: Players, attatckerOrHeal: Characters) {
@@ -194,7 +191,6 @@ class Fight {
                     fight.heal(player: player, healer: player.attackerCharacter!, characterToHeal: player.characters[1])
                 } else {
                     print(communication.errorTerm)
-                    print(communication.selectedCharaToHeal)
                     chooseCharaForHeal(player: player)
                 }
             case String(3):
@@ -202,12 +198,10 @@ class Fight {
                     fight.heal(player: player, healer: player.attackerCharacter!, characterToHeal: player.characters[2])
                 } else {
                     print(communication.errorTerm)
-                    print(communication.selectedCharaToHeal)
                     chooseCharaForHeal(player: player)
                 }
             default:
                 print(communication.errorTerm)
-                print(communication.selectedCharaToHeal)
                 chooseCharaForHeal(player: player)
             }
         }
