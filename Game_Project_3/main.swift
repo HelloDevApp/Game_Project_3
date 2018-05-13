@@ -21,39 +21,5 @@ let fight = Fight()
 //we create a chest
 let chest = Chest()
 
-
-//we display the message 'Choose and name 3 characters each your turn'
-print(communication.choose3Characters)
-//we display the message 'Player *: enter a name for your team'
-communication.messageRequestNameTeam(player: player_1)
-//°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
-game.answerTeamName(player: player_1)
-//we display the message  'player * your team is named \(nameTeam)'
-communication.messageTeamNameIs(player: player_1)
-//a message is displayed that helps the player to choose a character
-communication.helpChooseCharacter(player: player_1)
-//the player chooses his characters
-game.chooseCharacterTeam(player: player_1)
-//a message is posted to notify that the team is complete
-communication.teamFull(player: player_1)
-//we display the message 'Player *: enter a name for your team'
-communication.messageRequestNameTeam(player: player_2)
-//°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
-game.answerTeamName(player: player_2)
-//we display the message  'player * your team is named \(nameTeam)'
-communication.messageTeamNameIs(player: player_2)
-//a message is displayed that helps the player to choose a character
-communication.helpChooseCharacter(player: player_2)
-//the player chooses his characters
-game.chooseCharacterTeam(player: player_2)
-//a message is posted to notify that the team is complete
-communication.teamFull(player: player_2)
-//We alert the players that we're ready to fight.
-print(communication.fightReady)
-//the fight starts.
-fight.startFight(player1: player_1, player2: player_2)
-//display game stats for each player
-communication.DiplaysStats(player: player_1)
-communication.DiplaysStats(player: player_2)
-
+game.launchGame()
 

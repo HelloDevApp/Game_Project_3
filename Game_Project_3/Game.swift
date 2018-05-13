@@ -147,4 +147,83 @@ class Game {
             }
         }
     }
+    //method that resets all properties and tables necessary to restart a game
+    func resetForNewGame(player: Players) {
+        player.name = nil
+        player.characters = []
+        player.numberTeamCharacters = 0
+        player.charactersNames = []
+        player.attackerCharacter = nil
+        player.enemyCharacter = nil
+        player.numberAssault = [0,0,0]
+        player.numberHeal = [0,0,0]
+        player.numberHealMultiple = [0,0,0]
+        player.totalHealPV = [0,0,0]
+        player.totalNumberChest = 0
+        player.totalWeaponDamages = [0,0,0]
+    }
+    //method that asks the players if they want to play again or not
+    func restartOrQuit() {
+        print(communication.requestToRestart)
+        if let choice = readLine() {
+            switch choice {
+            case String(1):
+                print(communication.bigTextSeparation + communication.bigTextSeparation)
+                launchGame()
+            case String(2):
+                break
+            default:
+                print(communication.errorTerm)
+                restartOrQuit()
+            }
+        }
+    }
+    //method to start a game
+    func launchGame() {
+        //we display the message 'Choose and name 3 characters each your turn'
+        print(communication.choose3Characters)
+        //we display the message 'Player *: enter a name for your team'
+        communication.messageRequestNameTeam(player: player_1)
+        //°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
+        game.answerTeamName(player: player_1)
+        //we display the message  'player * your team is named \(nameTeam)'
+        communication.messageTeamNameIs(player: player_1)
+        
+        //a message is displayed that helps the player to choose a character
+        communication.helpChooseCharacter(player: player_1)
+        //the player chooses his characters
+        game.chooseCharacterTeam(player: player_1)
+        //a message is posted to notify that the team is complete
+        communication.teamFull(player: player_1)
+        
+        //we display the message 'Player *: enter a name for your team'
+        communication.messageRequestNameTeam(player: player_2)
+        //°°°°°°°°°°player * chooses a name for her team°°°°°°°°°°°°°°°
+        game.answerTeamName(player: player_2)
+        //we display the message  'player * your team is named \(nameTeam)'
+        communication.messageTeamNameIs(player: player_2)
+        
+        //a message is displayed that helps the player to choose a character
+        communication.helpChooseCharacter(player: player_2)
+        //the player chooses his characters
+        game.chooseCharacterTeam(player: player_2)
+        //a message is posted to notify that the team is complete
+        communication.teamFull(player: player_2)
+        
+        //We alert the players that we're ready to fight.
+        print(communication.fightReady)
+        //the fight starts.
+        fight.startFight(player1: player_1, player2: player_2)
+        
+        //display game stats for each players
+        communication.DiplaysStats(player: player_1)
+        communication.DiplaysStats(player: player_2)
+        
+        //we reset the stats + team name... for each player
+        game.resetForNewGame(player: player_1)
+        game.resetForNewGame(player: player_2)
+        
+        //the player chosen to play again or not
+        game.restartOrQuit()
+    }
 }
