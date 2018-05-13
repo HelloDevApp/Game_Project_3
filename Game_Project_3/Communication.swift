@@ -203,10 +203,10 @@ class Communication {
     //method that display a message that details what the character found in the chest
     func discoverWeaponBonusOrMagicianBonus(character: Characters) {
         if character.type != .magician {
-            print("En ouvrant le coffre \(character.name) à trouvé un \(character.weapon)\nDégats: \(character.weaponDamages)Pv\n")
+            print("En ouvrant le coffre \(character.name) à trouvé \(character.weapon)\nDégats: \(character.weaponDamages)Pv\n")
             print("\n\(character.name) s'équipe de la nouvelle arme le temps de l'attaque.\n")
         } else {
-            print("En ouvrant le coffre \(character.name) a trouvé des \(character.weapon)\nSoin: \(character.healer!)Pv.\n")
+            print("En ouvrant le coffre \(character.name) a trouvé \(character.weapon)\nSoin: \(character.healer!)Pv.\n")
             print("\n\(character.name) s'équipe du nouvel equipement le temps de l'attaque.\n")
         }
     }
@@ -261,6 +261,7 @@ class Communication {
             if player.numberHeal[index] != 0 || player.numberHealMultiple[index] != 0 {
                 print("Nombre de soins: \(player.numberHeal[index])")
                 print("Nombre de soins multiples: \(player.numberHealMultiple[index])")
+                print("Total PV soigné: \(player.totalHealPV[index])")
                 print(communication.sceneries4 + "\n")
             } else {
                 print(communication.sceneries4 + "\n")

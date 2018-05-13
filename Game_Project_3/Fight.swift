@@ -11,7 +11,7 @@ import Foundation
 //the fight class contains all the properties and method necessary for combat
 class Fight {
     
-    //call method when players' teams are full and who launches a fight until a player has no more characters
+    //call method when players' teams are full and who launches a fight until a player has no more characters + show the winner
     func startFight(player1: Players, player2: Players) {
         while player1.characters.count != 0 && player2.characters.count != 0 {
             if player1.characters.count > 0 && player2.characters.count != 0 {

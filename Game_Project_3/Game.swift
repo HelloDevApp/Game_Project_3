@@ -171,8 +171,10 @@ class Game {
                 print(communication.bigTextSeparation + communication.bigTextSeparation)
                 launchGame()
             case String(2):
+                print(communication.bigTextSeparation + communication.bigTextSeparation)
                 break
             default:
+                print(communication.bigTextSeparation + communication.textSeparation)
                 print(communication.errorTerm)
                 restartOrQuit()
             }

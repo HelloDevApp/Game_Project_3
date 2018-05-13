@@ -34,16 +34,16 @@ enum Damages: Int {
     case gnome = 45
 }
 enum WeaponsBonus: String {
-    case woodenArch = "Arc-En-Bois"
-    case gun = "Pistolet"
-    case uAV = "Drone"
-    case c4 = "Kit Explosif"
+    case woodenArch = "un Arc-En-Bois"
+    case gun = "un Pistolet"
+    case uAV = "un Drone"
+    case c4 = "un Kit Explosif"
 }
 enum MagicianBonus: String {
-    case plasters = "Pansements"
-    case medicalKit = "Kits Médical"
-    case smallPotion = "Petite Potions"
-    case BigPotion = "Grande Potions"
+    case plasters = "des Pansements"
+    case medicalKit = "un Kit Médical"
+    case smallPotion = "des Petite Potions"
+    case BigPotion = "des Grande Potions"
 }
 
 //class that is used to create characters
